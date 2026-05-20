@@ -130,8 +130,6 @@ Thus $x = x'c'$ and $y = y'c'$ are integer solutions. ∎
 
 **Statement**: Every integer $n > 1$ can be uniquely represented as a product of prime numbers, up to the order of the factors.
 
-Uniqueness is understood after factoring into primes.
-
 **Proof**:
 
 **Existence**: Every positive integer has a prime factor (by the well-ordering principle).
@@ -145,6 +143,129 @@ Thus one prime from the left factors equals one prime from the right factors.
 Removing equal factors and repeating this argument shows all factors match up.
 
 ∎
+
+### Theorem 5.8: Euclid's Lemma
+
+**Statement**: If $p$ is prime and $p \mid ab$, then $p \mid a$ or $p \mid b$.
+
+**Proof**:
+
+If $p \mid a$, the result holds. Otherwise, assume $p \nmid a$.
+Since $\gcd(a, p) = 1$ (p is prime and doesn't divide a), by Bezout's Identity
+there exist integers $x, y$ such that $ax + py = 1$.
+Multiplying by $b$: $abx + bpy = b$.
+Since $p \mid ab$ and $p \mid bpy$, $p$ divides the left side, so $p \mid b$.
+
+∎
+
+### Theorem 5.9: Chinese Remainder Theorem (Number Theory Version)
+
+**Statement**: Let $n_1, \dots, n_k$ be pairwise coprime positive integers and $r_1, \dots, r_k$ arbitrary integers.
+There exists a unique solution modulo $N = n_1n_2\cdots n_k$ to:
+
+$$x \equiv r_1 \pmod{n_1}$$
+$$x \equiv r_2 \pmod{n_2}$$
+$$\vdots$$
+$$x \equiv r_k \pmod{n_k}$$
+
+**Proof**:
+
+Let $N_i = N/n_i$ and $N_iy_i \equiv 1 \pmod{n_i}$. Such $y_i$ exist since $\gcd(N_i, n_i) = 1$.
+Let $x = \sum_{i=1}^k r_iN_iy_i$. Then $x \equiv r_iN_iy_i \equiv r_i \pmod{n_i}$
+and $x \equiv 0 \pmod{n_j}$ for $j \neq i$. Thus $x$ satisfies all congruences.
+For uniqueness, if $x \equiv y \pmod{n_i}$ for all $i$, then $x - y$ is divisible by each $n_i$.
+Since the $n_i$ are pairwise coprime, $x - y$ is divisible by $\text{lcm}(n_1, \dots, n_k) = N$.
+
+∎
+
+### Theorem 5.10: Quadratic Reciprocity Law
+
+**Statement**: Let $p$ and $q$ be distinct odd primes. Then:
+
+$$\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{(p-1)/2 \cdot (q-1)/2}$$
+
+**Proof**:
+
+This is one of the deepest theorems in number theory.
+Gauss provided the first proof. The law relates whether $p$ is a quadratic residue modulo $q$ and vice versa.
+When at least one of $p, q$ is $\equiv 1 \pmod 4$, then $\left(\frac{p}{q}\right) = \left(\frac{q}{p}\right)$.
+When both $p, q \equiv 3 \pmod 4$, then $\left(\frac{p}{q}\right) = -\left(\frac{q}{p}\right)$.
+
+∎
+
+### Theorem 5.11: Law of Quadratic Residues
+
+**Statement**: The congruence $x^2 \equiv a \pmod p$ has a solution if and only if:
+1. $p \mid a$, or
+2. $a^{(p-1)/2} \equiv 1 \pmod p$ (Euler's Criterion)
+
+**Proof**:
+
+Euler's Criterion states that $a^{(p-1)/2} \equiv \left(\frac{a}{p}\right) \pmod p$.
+If $\left(\frac{a}{p}\right) = 1$, then $a$ is a quadratic residue. If $\left(\frac{a}{p}\right) = -1$, it's not.
+If $p \mid a$, then $x = 0$ is a solution.
+
+∎
+
+### Theorem 5.12: Wilson's Theorem
+
+**Statement**: A natural number $p > 1$ is prime if and only if:
+
+$$(p-1)! \equiv -1 \pmod p$$
+
+**Proof**:
+
+**Only if**: Consider the multiplicative group $\mathbb{Z}_p^* = \{1, 2, \dots, p-1\}$.
+Each element has a unique inverse in this group. The only elements that are their own inverse
+are solutions to $x^2 \equiv 1 \pmod p$, which are $x \equiv 1$ and $x \equiv p-1$.
+All other elements come in inverse pairs whose product is 1.
+Thus $(p-1)! \equiv 1 \cdot (p-1) \cdot 1 \cdot 1 \cdots 1 \equiv -1 \pmod p$.
+
+**If**: If $(p-1)! \equiv -1 \pmod p$, then $p$ cannot be composite.
+If $p$ were composite, let $p = ab$ with $1 < a < b < p$.
+Then $a$ and $b$ would both appear in the product $1 \cdot 2 \cdots (p-1)$,
+so $(p-1)!$ would be divisible by $ab = p$, contradicting $(p-1)! \equiv -1 \pmod p$.
+
+∎
+
+## 5.7 Congruences
+
+### Theorem 5.13: Properties of Congruences
+
+**Statement**: For integers $a, b, c, d$ and positive integers $m, n$:
+1. $a \equiv b \pmod m \iff m \mid (a - b)$
+2. $a \equiv b \pmod m \implies a + c \equiv b + c \pmod m$
+3. $a \equiv b \pmod m \text{ and } c \equiv d \pmod m \implies ac \equiv bd \pmod m$
+4. $a \equiv b \pmod m \implies a^k \equiv b^k \pmod m$ for $k \geq 1$
+5. $a \equiv b \pmod m \text{ and } a \equiv b \pmod n \implies a \equiv b \pmod{\text{lcm}(m, n)}$
+
+**Proof**:
+
+1. By definition, $a \equiv b \pmod m$ means $a - b$ is a multiple of $m$.
+2. $a \equiv b \pmod m \implies m \mid (a - b)$. Then $m \mid (a + c - (b + c)) = a - b$.
+3. $a \equiv b \pmod m \implies a = b + km$.
+   $ac = (b + km)c = bc + kmc = bc + m(kc)$.
+   Similarly $bd + m(kd) = bd + m(kd)$.
+   So $ac - bd = bc + m(kc) - bd - m(kd) = b(c - d) + m(kc - kd)$.
+   Since $c \equiv d \pmod m$, $c - d = nm$, so $ac - bd = b(nm) + m(kc - kd) = m(bn + kc - kd)$.
+   Thus $ac \equiv bd \pmod m$.
+4. By induction, $a^k \equiv b^k \pmod m$.
+5. $a \equiv b \pmod m \implies m \mid (a - b)$.
+   $a \equiv b \pmod n \implies n \mid (a - b)$.
+   Thus $\text{lcm}(m, n) \mid \gcd(m, n)(a - b)$, so $\text{lcm}(m, n) \mid (a - b)$.
+
+∎
+
+---
+
+## 5.8 Exercises
+
+1. Use the Euclidean Algorithm to compute $\gcd(1234, 567)$.
+2. Prove that every prime number greater than 2 is of the form $4k + 1$ or $4k + 3$.
+3. Show that $n \mid (2^n - 2)$ if and only if $n$ is prime (Fermat's primality test).
+4. Prove that there are infinitely many primes.
+5. Use the Chinese Remainder Theorem to solve the system:
+   $$x \equiv 2 \pmod 3, \quad x \equiv 3 \pmod 5, \quad x \equiv 2 \pmod 7$$
 
 ## 5.7 Congruences
 
