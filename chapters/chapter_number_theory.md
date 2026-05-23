@@ -117,3 +117,16 @@ has a unique solution modulo $n = n_1n_2\cdots n_k$.
 4. Prove that there are infinitely many primes.
 5. Use the Chinese Remainder Theorem to solve the system:
    $$x \equiv 2 \pmod{3}, \quad x \equiv 3 \pmod{5}, \quad x \equiv 2 \pmod{7}$$
+
+
+### Euclid's Prime Uniqueness Theorem
+
+**Theorem:** Every integer greater than 1 can be uniquely represented as a product of primes, up to the order of the factors.
+
+**Proof:** 
+1. Existence: If $n$ is prime, it is its own product. If $n$ is composite, it has a proper divisor $d < n$. By induction, $d$ has a prime factorization. The smallest prime divisor of $n$, say $p$, must be a factor of $n$. Thus $n = p \cdot m$ where $m < n$. By induction, $m$ has a prime factorization, and multiplying by $p$ gives a prime factorization for $n$.
+
+2. Uniqueness: Suppose $n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_m$ with $p_i$ and $q_j$ primes. If $p_1$ is prime, it must divide some $q_j$. By Euclid's lemma, if a prime divides a product, it divides at least one factor. Thus $p_1 = q_j$. Removing $p_1$ and $q_j$ from both sides, we get $p_2 \cdots p_k = q_1 \cdots q_{j-1} q_{j+1} \cdots q_m$. By induction, the remaining factors match up.
+
+---
+*Number theory is one of the oldest branches of mathematics.*

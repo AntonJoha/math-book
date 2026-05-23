@@ -96,3 +96,13 @@ The open sets in $\mathbb{R}^n$ with the Euclidean metric form a topology.
 3. Prove that the closed unit disk $D = \{z \in \mathbb{C} : |z| \leq 1\}$ is compact.
 4. Show that $\mathbb{Q}$ (the rationals) is not connected.
 5. Prove that a non-empty compact subset of $\mathbb{R}$ contains its supremum and infimum.
+
+
+### Brouwer Fixed-Point Theorem
+
+**Theorem:** Every continuous function mapping a closed ball in Euclidean space to itself has at least one fixed point.
+
+**Proof:** This result follows from the Borsuk-Ulam theorem and the properties of the Lefschetz number. For a closed ball $B^n$ in $\mathbb{R}^n$, any continuous map $f: B^n \to B^n$ has a fixed point because the Lefschetz number of such a map is always non-zero.
+
+---
+*Topology studies properties preserved under continuous deformations.*

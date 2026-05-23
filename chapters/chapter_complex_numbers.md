@@ -123,3 +123,13 @@ Gaussian integers are complex numbers of the form $a + bi$ where $a, b \in \math
 3. Prove the parallelogram law for complex numbers: $|z + w|^2 + |z - w|^2 = 2(|z|^2 + |w|^2)$.
 4. Find all complex solutions to $z^4 = 16$.
 5. Prove that $\mathbb{Z}[i]$ is not a field (e.g., find $z \in \mathbb{Z}[i] \setminus \{0\}$ that has no multiplicative inverse in $\mathbb{Z}[i]$).
+
+
+### Fundamental Theorem of Algebra
+
+**Theorem:** Every non-constant polynomial equation with complex coefficients has at least one complex root.
+
+**Proof:** This can be proven using the maximum modulus principle and Liouville's theorem. Since a non-constant polynomial function tends to infinity as z approaches infinity, and by Liouville's theorem any bounded entire function is constant, a polynomial with no roots would lead to a contradiction.
+
+---
+*This theorem is the cornerstone of complex analysis and field theory.*

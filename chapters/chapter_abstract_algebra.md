@@ -97,3 +97,13 @@ A group is **finite** if it has a finite number of elements; otherwise it is **i
 3. Prove that if $G$ is a cyclic group of order $n$, then $G$ has a unique subgroup of order $d$ for each divisor $d$ of $n$.
 4. Show that the direct product of two finite groups is finite and its order is the product of their orders.
 5. Prove Cauchy's Theorem: If $G$ is a finite group and $p$ is a prime dividing $|G|$, then $G$ has an element of order $p$.
+
+
+### Lagrange's Theorem
+
+**Theorem:** If $G$ is a finite group of order $n$ and $H$ is a subgroup of $G$, then $|H|$ divides $|G|$.
+
+**Proof:** The index of $H$ in $G$ is $[G:H] = |G|/|H|$. Since the number of distinct left cosets of $H$ in $G$ is finite and each coset has the same cardinality as $H$, the number of cosets must be an integer. Thus $[G:H] \cdot |H| = |G|$, proving that $|H|$ divides $|G|$.
+
+---
+*Abstract algebra provides the language for modern mathematics.*
