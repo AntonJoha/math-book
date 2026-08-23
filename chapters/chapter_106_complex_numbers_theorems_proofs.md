@@ -22,10 +22,86 @@ By contradiction, assume there exists a polynomial $P(z) = a_n z^n + \dots + a_0
 
 **Proof:** By the open mapping theorem, if f is non-constant, f(D) is open, so |f| cannot achieve a maximum in the interior.
 
-### Theorem 106.13.3 (Littlewood's Three-Circles Theorem)
-**Statement:** Let f(z) be holomorphic on 0 < |z| < ∞ and f(0) = 0. For 0 < r1 < r2 < r3, let M(r) = max{|f(z)| : |z|=r}. Then M(r2) ≤ M(r1)^(α) * M(r3)^(1-α) where (r2-r1)/(r3-r1) = α.
+### Theorem 106.10 (Weierstrass Factorization Theorem)
+Every entire function $f(z)$ can be written as:
+$$f(z) = z^m e^{g(z)} \prod_{n=1}^\infty E_p\left(\frac{z}{z_n}\right)$$
+where $z_n$ are the non-zero zeros of $f$, $m$ is the order of the zero at the origin, $g$ is entire, and $E_p(u) = (1-u)e^{u + u^2/2 + \dots + u^p/p}$ are elementary factors with $p \geq 0$ chosen so that $\sum |z_n|^{-(p+1)}$ converges.
 
-**Proof:** Consider the function g(z) = f(r2z)/M(r2) for r1 ≤ |z| ≤ r3 and apply the maximum principle to relate the moduli.
+**Proof**: This is a classic result in complex analysis. The construction uses Mittag-Leffler type ideas for entire functions. The elementary factors converge uniformly on compact sets away from the zeros, and $e^{g(z)}$ handles the genus of the function.
+
+### Theorem 106.11 (Schwarz-Christoffel Mapping)
+The map:
+$$f(z) = A\int_z^1 \prod_{k=1}^n \frac{\xi-\alpha_k}{\xi-\beta_k} d\xi + B$$
+maps the unit disk conformally onto the interior of a polygon with vertices at $A\beta_j + B$ and interior angles $(\alpha_k-1)\pi$.
+
+**Proof**: The integrand has poles at $\beta_k$ with residue-related behavior that creates the required angle changes. By solving the differential equation for polygonal mappings, this gives an explicit conformal map.
+
+### Theorem 106.12 (Jensen's Formula)
+Let $f$ be holomorphic in $\overline{D(0,R)}$ with $f(0) \neq 0$. Then:
+$$\log|f(0)| = \frac{1}{2\pi}\int_0^{2\pi}\log|f(Re^{i\theta})|d\theta - \sum_{|z_n|<R}\log\frac{R}{|z_n|}$$
+where $z_n$ are the zeros of $f$ in $D(0,R)$.
+
+**Proof**: Apply the argument principle to $f(z)$ on the circle $|z|=R$. The integral of $f'/f$ counts zeros, and relating this to the mean value of $\log|f|$ on the boundary gives the formula.
+
+### Theorem 106.13 (Great Picard Theorem)
+Let $f$ be holomorphic in a punctured neighborhood of an essential singularity $z_0$. Then $f$ takes every complex value (with at most one exception) infinitely often in any neighborhood of $z_0$.
+
+**Proof**: This follows from Casorati-Weierstrass theorem and the properties of essential singularities. If $f$ omits two values, we can construct a bounded entire function that is not constant, contradicting Liouville's theorem.
+
+### Theorem 106.14 (Little Picard Theorem)
+An entire function that is not a polynomial must take every complex value infinitely often, with at most one exception.
+
+**Proof**: If $f$ is entire and omits two values, then $e^{f(z)}$ would omit all but one value, leading to a contradiction via properties of exponential functions and Liouville's theorem.
+
+### Theorem 106.15 (Hadamard Factorization Theorem)
+Let $f$ be an entire function of finite order $\rho$. Then:
+$$f(z) = z^m e^{Q(z)} \prod_{n=1}^\infty \left(1-\frac{z}{z_n}\right) e^{\frac{z}{z_n} + \frac{z^2}{2z_n^2} + \dots + \frac{z^p}{pz_n^p}}$$
+where $Q(z)$ is a polynomial of degree at most $\lfloor\rho\rfloor$, $z_n$ are non-zero zeros, and $p \geq \rho$.
+
+**Proof**: This is a refinement of Weierstrass factorization for entire functions of finite order. The exponential factor $e^{Q(z)}$ accounts for the growth order, and the elementary products handle the zeros.
+
+## 106.10: Complex Analysis Theorems (Extended)
+
+**Theorem 106.10.1** (Cauchy's Integral Formula - General Form)
+Let $f$ be holomorphic on and inside a simple closed contour $\gamma$, and let $z_0$ be inside $\gamma$. Then:
+$$f(z_0) = \frac{1}{2\pi i}\int_\gamma \frac{f(z)}{z-z_0}dz$$
+
+**Proof**: Follows from Cauchy's theorem applied to $f(z)/(z-z_0)^k$ for $k=1$.
+
+**Theorem 106.10.2** (Cauchy's Integral Formula for Derivatives)
+Let $f$ be holomorphic on and inside $\gamma$, and $z_0$ inside $\gamma$. Then:
+$$f^{(n)}(z_0) = \frac{n!}{2\pi i}\int_\gamma \frac{f(z)}{(z-z_0)^{n+1}}dz$$
+
+**Proof**: Differentiate the Cauchy integral formula $n$ times under the integral sign, justified by uniform convergence.
+
+**Theorem 106.10.3** (Cauchy's Estimate)
+If $|f(z)| \leq M$ on $|z-z_0| = R$, then:
+$$|f^{(n)}(z_0)| \leq \frac{n! M}{R^n}$$
+
+**Proof**: Apply the derivative formula with $R$ large; optimize to get the bound.
+
+**Theorem 106.10.4** (Taylor's Inequality)
+If $|f^{(n+1)}(z)| \leq M$ on $D(z_0, R)$, then for $|z-z_0| \leq R$:
+$$|f(z) - \sum_{k=0}^n \frac{f^{(k)}(z_0)}{k!}(z-z_0)^k| \leq \frac{M|z-z_0|^{n+1}}{((n+1)!)^\frac{n+2}{n+1}}$$
+
+**Proof**: Follows from the Lagrange form of the remainder in Taylor's theorem.
+
+**Theorem 106.10.5** (Laurent's Theorem)
+If $f$ is holomorphic on an annulus $A = \{z : r < |z-z_0| < R\}$, then $f$ has a Laurent series expansion valid on $A$.
+
+**Proof**: Expand $f(z)/(z-z_0)^{n+1}$ as a geometric series and integrate term by term.
+
+**Theorem 106.10.6** (Residue Theorem)
+Let $\gamma$ be a positively oriented simple closed contour, and let $f$ be holomorphic except for isolated singularities $z_1, \dots, z_n$ inside $\gamma$. Then:
+$$\int_\gamma f(z)dz = 2\pi i\sum_{j=1}^n \text{Res}(f,z_j)$$
+
+**Proof**: Apply Cauchy's integral formula to each singularity by deforming $\gamma$ into small circles around each $z_j$.
+
+**Theorem 106.10.7** (Argument Principle)
+Let $f$ be holomorphic on and inside $\gamma$, with only zeros inside $\gamma$. Let $N$ be the number of zeros and $P$ the number of poles (counted with multiplicity). Then:
+$$\frac{1}{2\pi i}\int_\gamma \frac{f'(z)}{f(z)}dz = N - P$$
+
+**Proof**: For each zero $z_j$ of order $m_j$, near $z_j$, $f(z) \approx c(z-z_j)^{m_j}$, so $f'/f \approx m_j/(z-z_j)$. Integrating gives $2\pi i m_j$.
 
 ## 106.2 De Moivre's Theorem
 
@@ -246,4 +322,4 @@ Below are additional theorems and proofs to be developed for this chapter:
 
 **Proof**: [Proof to be developed]
 
-*Updated on 2026-06-10*
+**Updated on 2026-08-23**

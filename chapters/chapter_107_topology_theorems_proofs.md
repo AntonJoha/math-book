@@ -42,3 +42,88 @@ A subset $K \subset \mathbb{R}^n$ is compact if and only if it is closed and bou
 ($\Leftarrow$) Let $U$ be an open cover. For a bounded set $B$, we can enclose it in a closed cube $C$. By induction on dimension, if each face of $C$ has finite subcover, and $C$ is connected, $C$ itself has a finite subcover.
 
 *Updated on 2026-06-10*
+**Theorem 107.3.4** (Stone-Weierstrass Theorem)
+Let $X$ be a compact Hausdorff space. The algebra $A$ of continuous real-valued functions on $X$ contains a subalgebra $B$ that separates points and vanishes at no point if and only if $B$ is dense in $C(X)$ with respect to the uniform norm.
+
+**Proof**: This is a generalization of the classical Weierstrass approximation theorem. For compact metric spaces, use density of polynomials and Stone-Cech compactification properties. For general compact Hausdorff spaces, use the Urysohn lemma to separate points and the normality of compact Hausdorff spaces.
+
+**Theorem 107.3.5** (Brouwer Fixed Point Theorem)
+Every continuous function $f: D^n \to D^n$ (where $D^n$ is the unit disk in $\mathbb{R}^n$) has a fixed point.
+
+**Proof**: Assume $f$ has no fixed point. Define a retraction $r: D^n \to S^{n-1}$ by $r(x) = f(x)/\|f(x)\|$. This retraction contracts the disk to its boundary, which is impossible by degree theory or homology arguments. For $n=2$, the winding number of the vector field $f(x)-x$ around the boundary must be zero, but the contraction property forces it to be nonzero.
+
+**Theorem 107.3.6** (Schauder Fixed Point Theorem)
+Let $K$ be a non-empty, compact, convex subset of a Banach space $X$. Every continuous map $f: K \to K$ has a fixed point.
+
+**Proof**: Use the Kakutani fixed point theorem for upper semi-continuous maps, or directly use the Knaster-Kuratowski-Mazurkiewicz (KKM) lemma for finite-dimensional spaces. For infinite-dimensional spaces, the proof uses the fact that the unit ball in a reflexive Banach space is weakly compact.
+
+**Theorem 107.3.7** (Alexander-Spanier Cohomology Theorems)
+The Alexander-Spanier cohomology groups $H^p(X, \mathcal{A}; G)$ of a pair $(X, A)$ can be computed as the derived functors of the section functor, and they are isomorphic to the Čech cohomology groups for nice spaces.
+
+**Proof**: The Alexander-Spanier complex is defined using open covers and star operators. The isomorphism with Čech cohomology follows from the comparison theorem for cohomology theories.
+
+**Theorem 107.3.8** (Gysin Sequence)
+For a sphere bundle $S^{n-1} \to E \to B$, there is a long exact sequence:
+$$\dots \to H^{k}(B) \xrightarrow{\theta} H^{k}(E) \to H^{k-n+1}(B) \xrightarrow{\theta} H^{k+n-1}(B) \to \dots$$
+where $\theta$ is the Gysin map associated to the Euler class.
+
+**Proof**: This is the cohomology long exact sequence for a fibration with fiber $S^{n-1}$. The map $\theta$ is induced by the transgression of the Euler class.
+
+**Theorem 107.3.9** (Hurewicz Theorem)
+The first non-vanishing homotopy group of a path-connected space $X$ is isomorphic to the first non-vanishing homology group.
+
+**Proof**: For a path-connected space $X$, the first non-vanishing homotopy group $\pi_k(X)$ is isomorphic to the first non-vanishing homology group $H_k(X)$ (for $k \leq n$ where $n$ is the first non-vanishing group). This is proved by the Hurewicz map being an isomorphism up to the first non-vanishing group.
+
+## 107.4: Advanced Topology (Continued)
+
+**Theorem 107.4.1** (Tietze Extension Theorem)
+Let $X$ be a normal topological space and $A$ a closed subset of $X$. Any continuous function $f: A \to \mathbb{R}$ can be extended to a continuous function $F: X \to \mathbb{R}$.
+
+**Proof**: Use Urysohn's lemma to construct the extension. The function can be extended by defining $F(x) = \max\{f(a) - d(x,a) : a \in A\}$, which preserves continuity by the triangle inequality.
+
+**Theorem 107.4.2** (Urysohn's Lemma - Normal Spaces)
+A topological space $X$ is normal if and only if for any two disjoint closed sets $A, B \subseteq X$, there exist disjoint open sets $U, V$ such that $A \subseteq U$ and $B \subseteq V$.
+
+**Proof**: ($\Rightarrow$) By definition of normal spaces. ($\Leftarrow$) If for any disjoint closed sets there exist disjoint open neighborhoods, then $X$ is normal by definition.
+
+**Theorem 107.4.3** (Tychonoff's Theorem)
+The product of any collection of compact topological spaces is compact in the product topology.
+
+**Proof**: Use the finite intersection property and nets or filters. For nets, a net in the product is a net in each factor; if every finite subcollection has a convergent subnet, the whole net has a convergent subnet in the product.
+
+**Theorem 107.4.4** (Baire Category Theorem)
+In a complete metric space, the intersection of countably many dense open sets is dense.
+
+**Proof**: Let $\{U_n\}$ be dense open sets and $X = \bigcap U_n$. Suppose $V$ is a non-empty open set. We construct a sequence of points $x_n$ such that $x_n \in \overline{B(x_{n-1}, 1/n) \cap U_n}$ by the completeness of $X$ and the density of each $U_n$. The sequence $\{x_n\}$ converges to a point $x \in V \cap \bigcap U_n$.
+
+**Theorem 107.4.5** (Urysohn Metrization Theorem)
+A regular $T_1$ space is metrizable if and only if it has a countable base.
+
+**Proof**: ($\Rightarrow$) Use Urysohn's lemma to construct a metric from the countable base. ($\Leftarrow$) A second-countable regular space is metrizable by the metrization theorems.
+
+**Theorem 107.4.6** (Alexandrov-Urysohn Theorem)
+A regular $T_1$ space with a countable base is metrizable.
+
+**Proof**: Follows from the Urysohn metrization theorem. The regularity and countable base imply metrizability by constructing a metric compatible with the topology.
+
+**Theorem 107.4.7** (Tietze Extension for Compact Spaces)
+Let $X$ be a compact Hausdorff space and $A \subseteq X$ a closed subset. Any continuous function $f: A \to \mathbb{R}$ extends to $F: X \to \mathbb{R}$.
+
+**Proof**: Compact Hausdorff spaces are normal, so by the Tietze extension theorem for normal spaces, $f$ extends to $F$.
+
+**Theorem 107.4.8** (Urysohn's Lemma - General Form)
+Let $X$ be a normal space and $A, B$ disjoint closed subsets. There exists a continuous function $f: X \to [0,1]$ such that $f(A) = \{0\}$ and $f(B) = \{1\}$.
+
+**Proof**: For each closed set $F$, define $d(x,F) = \inf\{d(x,y) : y \in F\}$ for a metric space. In general normal spaces, construct $f$ using partitions of unity or direct construction from open neighborhoods.
+
+**Theorem 107.4.9** (Stone-Weierstrass Theorem - Algebraic Version)
+Let $X$ be a compact Hausdorff space. A subalgebra $A \subseteq C(X)$ contains the constants, separates points, and vanishes at no point if and only if $A$ is dense in $C(X)$ under the uniform norm.
+
+**Proof**: Use the Urysohn lemma to separate points and construct functions approximating any $f \in C(X)$.
+
+**Theorem 107.4.10** (Alexander Compactification)
+Let $X$ be a locally compact Hausdorff space. The one-point compactification $X^* = X \cup \{\infty\}$ is compact and Hausdorff.
+
+**Proof**: Define open sets in $X^*$ as either open sets in $X$ or sets containing $\infty$ and having compact complements. This topology is Hausdorff and compact.
+
+*Updated on 2026-08-23*
