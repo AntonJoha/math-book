@@ -56,3 +56,105 @@ The Gysin sequence is a long exact sequence in cohomology arising from the Euler
 
 **Proof**: 
 Consider the universal cover and the action of the fundamental group. Use spectral sequence arguments to relate homotopy and homology. QED
+
+
+================================================================================
+ADDITIONAL THEOREMS AND PROOFS
+================================================================================
+
+
+### Urysohn's Lemma
+
+
+#### Statement of Urysohn's Lemma
+[Complete mathematical statement and conditions]
+
+### Proof of Urysohn's Lemma
+[Detailed proof structure and steps]
+
+---
+
+
+### Tietze Extension Theorem
+
+
+#### Statement of Tietze Extension Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Tietze Extension Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Stone-Weierstrass Theorem
+
+
+#### Statement of Stone-Weierstrass Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Stone-Weierstrass Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Brouwer Fixed Point Theorem
+
+
+#### Statement of Brouwer Fixed Point Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Brouwer Fixed Point Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Schauder Fixed Point Theorem
+
+
+#### Statement of Schauder Fixed Point Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Schauder Fixed Point Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Alexander-Spanier Cohomology Theorems
+
+
+#### Statement of Alexander-Spanier Cohomology Theorems
+[Complete mathematical statement and conditions]
+
+### Proof of Alexander-Spanier Cohomology Theorems
+[Detailed proof structure and steps]
+
+---
+
+
+### Gysin Sequence
+
+
+#### Statement of Gysin Sequence
+[Complete mathematical statement and conditions]
+
+### Proof of Gysin Sequence
+[Detailed proof structure and steps]
+
+---
+
+
+### Hurewicz Theorem
+
+
+#### Statement of Hurewicz Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Hurewicz Theorem
+[Detailed proof structure and steps]
+
+---
+
