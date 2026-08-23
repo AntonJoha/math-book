@@ -85,3 +85,23 @@ $$	ext{pd}_R(M) + 	ext{depth}(M) = 	ext{depth}(R)$$
 5. Matsumura, H. "Commutative Ring Theory". Cambridge University Press, 1980.
 
 *Updated on 2026-08-21*
+
+## Key Theorems and Proofs
+
+Below are additional theorems and proofs to be developed for this chapter:
+
+### Theorem 1
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+### Theorem 2
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+---
+
+*Updated on 2026-08-23*

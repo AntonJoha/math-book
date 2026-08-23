@@ -183,3 +183,23 @@ Let $u$ be continuous on $\partial D$ where $D$ is a bounded domain in $\mathbb{
 8. **Conway, J. B.** "Functions of One Complex Variable II", Springer, 1995.
 
 **Updated on 2026-08-22**
+
+## Key Theorems and Proofs
+
+Below are additional theorems and proofs to be developed for this chapter:
+
+### Theorem 1
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+### Theorem 2
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+---
+
+*Updated on 2026-08-23*

@@ -105,3 +105,23 @@ where $N$ is the number of zeros and $P$ is the number of poles of $f$ inside $\
 **Proof:** The Little Picard theorem is proved using the Great Picard theorem and the properties of entire functions.
 
 *Updated on 2026-08-23*
+
+## Key Theorems and Proofs
+
+Below are additional theorems and proofs to be developed for this chapter:
+
+### Theorem 1
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+### Theorem 2
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+---
+
+*Updated on 2026-08-23*

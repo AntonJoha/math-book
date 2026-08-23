@@ -95,3 +95,23 @@ Prove that the class number formula relates the regulator to the residue of the 
 5. Serre, J.P. "A Course in Arithmetic". Springer, 1973.
 
 *Updated on 2026-08-21*
+
+## Key Theorems and Proofs
+
+Below are additional theorems and proofs to be developed for this chapter:
+
+### Theorem 1
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+### Theorem 2
+
+**Statement**: [Theorem statement]
+
+**Proof**: [Proof to be developed]
+
+---
+
+*Updated on 2026-08-23*
