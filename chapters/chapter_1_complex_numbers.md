@@ -8,6 +8,7 @@ $$z = a + bi$$
 
 where $a$ and $b$ are real numbers, and $i$ is the imaginary unit satisfying $i^2 = -1$.
 
+<<<<<<< HEAD
 **Definition (Complex Number Representation):**
 Any complex number $z$ can be represented in multiple equivalent forms:
 1. **Rectangular form**: $z = a + bi$ where $a, b \in \mathbb{R}$
@@ -15,6 +16,8 @@ Any complex number $z$ can be represented in multiple equivalent forms:
 3. **Exponential form**: $z = re^{i\theta}$ (Euler's form)
 4. **Gaussian form**: For Gaussian integers $a + bi$ where $a, b \in \mathbb{Z}$
 
+=======
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ### Theorem 1.1: The Fundamental Theorem of Algebra
 
 **Statement**: Every non-constant single-variable polynomial with complex coefficients has at least one complex root.
@@ -58,6 +61,7 @@ $$= \cos((k+1)\theta) + i\sin((k+1)\theta)$$
 
 This uses the angle addition formulas for cosine and sine. ∎
 
+<<<<<<< HEAD
 ### Theorem 1.3: De Moivre's Formula for Powers of Roots
 
 **Statement**: If $z = e^{i\theta}$ is a root of unity of order $n$ (i.e., $z^n = 1$), then the $n$-th roots of unity are:
@@ -67,6 +71,8 @@ $$\omega_k = e^{i\frac{2\pi k}{n}}, \quad k = 0, 1, 2, \dots, n-1$$
 **Proof**: 
 We need $z^n = 1$, which means $e^{in\theta} = 1$. This occurs when $in\theta = 2\pi k$ for integer $k$. Thus $\theta = \frac{2\pi k}{n}$, giving us the roots above. ∎
 
+=======
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 1.3 Modulus and Conjugate
 
 ### Theorem 1.3: Properties of the Complex Conjugate
@@ -112,6 +118,7 @@ Let $z = a + bi$. We define:
 - $\theta = \arg(z)$ such that $\cos \theta = \frac{a}{r}$ and $\sin \theta = \frac{b}{r}$
 
 Then:
+<<<<<<< HEAD
 $r(\cos \theta + i \sin \theta) = r\left(\frac{a}{r} + i\frac{b}{r}\right) = a + bi = z$
 
 The uniqueness of $\theta$ in $(-\pi, \pi]$ follows from the fact that sine and cosine uniquely determine an angle in this interval. ∎
@@ -346,6 +353,26 @@ $$\prod_{k=0}^{n-1} e^{i\frac{2\pi k}{n}} = (-1)^{n-1}$$
 The sum is the sum of all roots of $z^n - 1 = 0$, which by Vieta's formulas equals the negative coefficient of $z^{n-1}$, which is 0 for $n \ge 2$.
 
 The product equals the constant term of $z^n - 1$, which is $(-1)^{n-1}$. ∎
+=======
+$r(\cos \theta + i \sin \theta) = r\left(\frac{a}{r} + i\frac{b}{r}\right) = a + bi = z
+
+## Exercises
+
+### Exercise 1.1
+Write the complex number $3 + 4i$ in polar form, giving the argument in degrees.
+
+### Exercise 1.2
+Calculate $(1 + i)^3$ using De Moivre's Formula, showing all steps.
+
+### Exercise 1.3
+Prove that if $z$ is a root of unity of order $n$, then $\overline{z}$ is also a root of unity of order $n.$
+
+### Exercise 1.4
+Find all complex roots of the equation $z^4 = 1$, and express them in polar form.
+
+### Exercise 1.5
+Let $z = \cos \theta + i \sin \theta$. Prove that $z^n + z^{-n} = 2 \cos(n\theta)$.
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 
 ## Exercises
 
@@ -353,12 +380,17 @@ The product equals the constant term of $z^n - 1$, which is $(-1)^{n-1}$. ∎
 Write the complex number $-3 + 4i$ in polar form, giving the argument in radians.
 
 ### Exercise 1.2
+<<<<<<< HEAD
 Calculate $(-1 + i\sqrt{3})^3$ using Euler's Formula, showing all steps.
+=======
+Calculate $(2 - i)^4$ using De Moivre's Formula, showing all steps.
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 
 ### Exercise 1.3
 Prove that if $z$ is a root of unity of order $n$, then $\overline{z}$ is also a root of unity of order $n.$
 
 ### Exercise 1.4
+<<<<<<< HEAD
 Find all complex roots of the equation $z^4 = 1$, and express them in exponential form.
 
 ### Exercise 1.5
@@ -1531,3 +1563,11 @@ Below are additional theorems and proofs to be developed for this chapter:
 **Proof**: [Proof to be developed]
 
 *Updated on 2026-06-10*
+=======
+Find all complex roots of the equation $z^4 = 1$, and express them in polar form.
+
+### Exercise 1.5
+Let $z = \cos \theta + i \sin \theta$. Prove that $z^n + z^{-n} = 2 \cos(n\theta)$.$
+
+For uniqueness of the principal argument in $(-\pi, \pi]$, note that sine and cosine are 2π-periodic, and the interval $(-\pi, \pi]$ contains exactly one angle whose sine and cosine match $\frac{b}{r}$ and $\frac{a}{r}$. ∎
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d

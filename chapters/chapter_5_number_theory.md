@@ -11,6 +11,11 @@ Number theory is the branch of mathematics concerned with the properties of inte
 - **Divisibility:** $a$ divides $b$ (written $a \mid b$) if $b = ak$ for some integer $k$
 - **GCD and LCM:** Greatest Common Divisor and Least Common Multiple
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.2 Euclidean Algorithm and GCD
 
 ### 5.2.1 The Euclidean Algorithm
@@ -64,6 +69,11 @@ So $62 \cdot 473 - 85 \cdot 345 = 1$, i.e., $\gcd(473, 345) = 1$.
 
 **Corollary 5.2:** $\gcd(a_1, \ldots, a_n) = \gcd(a_1, \gcd(a_2, \ldots, \gcd(a_{n-1}, a_n)))$.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.3 Modular Arithmetic
 
 ### 5.3.1 Congruences
@@ -129,6 +139,11 @@ $$\phi(n) = n \prod_{i=1}^k \left(1 - \frac{1}{p_i}\right) = \prod_{i=1}^k (p_i^
 
 **Theorem 5.6 (Carmichael's Theorem):** $a^{\lambda(n)} \equiv 1 \pmod n$ for all $\gcd(a, n) = 1$.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.4 Quadratic Residues and Legendre Symbol
 
 ### 5.4.1 Legendre Symbol
@@ -160,6 +175,11 @@ $$
 $$a \text{ is a QR mod } p \iff a^{\frac{p-1}{2}} \equiv 1 \pmod p$$
 If $a^{\frac{p-1}{2}} \equiv -1 \pmod p$, then $a$ is a QR non-residue.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.5 Prime Numbers
 
 ### 5.5.1 Distribution of Primes
@@ -182,6 +202,11 @@ $$\pi(x) \sim \frac{x}{\ln x}$$
 **Theorem 5.12 (Dirichlet's Theorem):** Let $a, d$ be positive integers with $\gcd(a, d) = 1$.
 There are infinitely many primes of the form $a + nd$ for $n = 0, 1, 2, \ldots$.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.6 Diophantine Equations
 
 ### 5.6.1 Pell's Equation
@@ -198,6 +223,11 @@ There are infinitely many primes of the form $a + nd$ for $n = 0, 1, 2, \ldots$.
 
 **History:** Proposed by Fermat in 1637; proven by Andrew Wiles in 1994.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.7 Exercises
 
 ### Exercise 5.1
@@ -241,6 +271,11 @@ Prove that if $p$ is an odd prime, then $p \mid (a^p - a)$ for any integer $a$.
 
 **Solution:** This is Fermat's Little Theorem. If $\gcd(a, p) = 1$, then $a^{p-1} \equiv 1 \pmod p$, so $a^p \equiv a \pmod p$. If $p \mid a$, the result is trivial.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.8 Advanced Topics
 
 ### 5.8.1 Quadratic Fields and Minkowski's Theorem
@@ -263,6 +298,11 @@ Prove that if $p$ is an odd prime, then $p \mid (a^p - a)$ for any integer $a$.
 
 **Partial Results:** Goldbach verified this for all even integers up to $4 \cdot 10^{18}$. Vinogradov proved that every odd integer sufficiently large is the sum of three primes.
 
+<<<<<<< HEAD
+=======
+---
+
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
 ## 5.9 References
 
 - Hardy & Wright, *An Introduction to the Theory of Numbers* (5th ed., 2008)
@@ -270,6 +310,7 @@ Prove that if $p$ is an odd prime, then $p \mid (a^p - a)$ for any integer $a$.
 - Koblitz, *Introduction to Algebraic Number Theory* (1995)
 - Ireland & Rosen, *A Classical Introduction to Modern Number Theory* (3rd ed., 2012)
 
+<<<<<<< HEAD
 *This chapter has been extended with additional theorems, proofs, and exercises. The Euclidean Algorithm section now includes the Extended Euclidean Algorithm with a complete worked example. Modular arithmetic has been expanded with the Chinese Remainder Theorem and Euler's Totient Function. Number theory now covers quadratic residues via the Legendre symbol and includes the Quadratic Reciprocity Law. Prime number distribution, Diophantine equations including Pell's equation and Fermat's Last Theorem, and advanced topics including Minkowski's theorem, the Riemann zeta function, and Goldbach's conjecture have been added.*
 
 *Exercises 5.1-5.4 provide practice with the material, ranging from Euclidean algorithm computations to proofs of Fermat's Little Theorem. Advanced topics 5.8 and 5.9 introduce connections to algebraic number theory, analytic number theory, and open problems.*
@@ -291,3 +332,10 @@ Below are additional theorems and proofs to be developed for this chapter:
 **Proof**: [Proof to be developed]
 
 *Updated on 2026-06-10*
+=======
+---
+
+*This chapter has been extended with additional theorems, proofs, and exercises. The Euclidean Algorithm section now includes the Extended Euclidean Algorithm with a complete worked example. Modular arithmetic has been expanded with the Chinese Remainder Theorem and Euler's Totient Function. Number theory now covers quadratic residues via the Legendre symbol and includes the Quadratic Reciprocity Law. Prime number distribution, Diophantine equations including Pell's equation and Fermat's Last Theorem, and advanced topics including Minkowski's theorem, the Riemann zeta function, and Goldbach's conjecture have been added.*
+
+*Exercises 5.1-5.4 provide practice with the material, ranging from Euclidean algorithm computations to proofs of Fermat's Little Theorem. Advanced topics 5.8 and 5.9 introduce connections to algebraic number theory, analytic number theory, and open problems.*
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d

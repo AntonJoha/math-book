@@ -281,6 +281,7 @@ Thus $f = g$ on $D$.
 4. **Exercise 6.4**: Let $P(z)$ be a polynomial with real coefficients. Show that all non-real roots come in complex conjugate pairs.
 
 5. **Exercise 6.5**: Prove that the roots of $z^n + az^{n-1} + b = 0$ lie in the disk $|z| < \max(1, |a|, |b|^{1/(n-1)})$.
+<<<<<<< HEAD
 
 ## Key Theorems and Proofs
 
@@ -299,3 +300,5 @@ Below are additional theorems and proofs to be developed for this chapter:
 **Proof**: [Proof to be developed]
 
 *Updated on 2026-06-10*
+=======
+>>>>>>> b99e2a35ba3ed90f15a535bf294bd9753445bc2d
