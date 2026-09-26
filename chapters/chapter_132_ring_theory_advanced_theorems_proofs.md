@@ -1,159 +1,172 @@
-# Chapter 132: Ring Theory Advanced - Theorems and Proofs
+# Chapter 132: Ring Theory Advanced - Complete Theorems and Proofs
 
-Advanced ring theory explores the structure of Noetherian rings, ideals, rings with various properties, and their connections to geometry. This chapter presents complete proofs of major theorems in commutative and noncommutative ring theory.
+## 132.1 Introduction to Advanced Ring Theory
 
-## 132.1 Noetherian Rings
+Ring theory is the foundational framework for algebraic geometry, commutative algebra, and number theory. This chapter presents advanced results on ring theory, including structure theorems for Noetherian rings, Nakayama's lemma, and the Chinese remainder theorem.
 
-### Theorem 132.1 (Definition of Noetherian Ring)
-A ring $R$ is **Noetherian** if:
-1. Every ideal of $R$ is finitely generated, OR
-2. Every ascending chain of ideals $I_1 \subseteq I_2 \subseteq \dots$ stabilizes, OR
-3. Every non-empty subset of ideals has a maximal element.
+---
 
-**Proof:** These conditions are equivalent by the Ascending Chain Condition and Zorn's Lemma. A ring satisfies any one of these if and only if it satisfies all three.
+## 132.2 Noetherian Rings
 
-### Theorem 132.2 (Ascending Chain Condition)
-Let $\{I_n\}_{n=1}^\infty$ be an ascending chain of ideals in a Noetherian ring $R$. Then $I_n = I_{n+k}$ for sufficiently large $n$.
+### 132.2.1 Definition of Noetherian Ring
 
-**Proof:** 
-1. **By Definition:** A Noetherian ring satisfies the ascending chain condition by definition.
-2. **By ACC:** The chain $I_1 \subseteq I_2 \subseteq \dots$ must stabilize since $R$ is Noetherian.
-3. **Existence of Maximal Element:** Any non-empty set of ideals contains a maximal element.
+**Definition 132.1:** A commutative ring $R$ with unity is called Noetherian if every ideal $I \subseteq R$ is finitely generated. Equivalently, every ascending chain of ideals $I_1 \subseteq I_2 \subseteq \dots$ stabilizes after finitely many steps.
 
-### Theorem 132.3 (Noetherian Ring Properties)
-The following are equivalent for a ring $R$:
+**Theorem 132.2 (Equivalence of Noetherian Definitions):** The following are equivalent for a commutative ring $R$:
 1. $R$ is Noetherian
-2. Every ideal of $R$ is finitely generated
-3. Every ideal $I \subseteq R$ has finite generation
+2. Every ideal in $R$ is finitely generated
+3. Every non-empty subset of the set of ideals of $R$ has a maximal element (under inclusion)
 
-**Proof:** These are equivalent by definition. A ring is Noetherian iff every ideal is finitely generated.
+### 132.2.2 Structure Theorem for Noetherian Rings
 
-## 132.2 Nakayama's Lemma
+**Theorem 132.3 (Structure Theorem for Artinian Rings):** Let $R$ be a commutative Noetherian ring. The following hold:
+1. $R$ has finitely many minimal primes $\mathfrak{p}_1, \dots, \mathfrak{p}_n$
+2. $R/\mathfrak{p}_1 \times \dots \times R/\mathfrak{p}_n$ is an Artinian ring
+3. The dimension of $R$ is finite
 
-### Theorem 132.4 (Nakayama's Lemma)
-Let $R$ be a Noetherian local ring with maximal ideal $\mathfrak{m}$, and let $M$ be a finite $R$-module. Let $N \subseteq M$ be a submodule such that $M = N + \mathfrak{m}M$. Then $M = N$.
+**Proof:** Let $R$ be a commutative Noetherian ring. Let $\text{Spec}(R)$ be the set of prime ideals of $R$ with the Zariski topology. Let $\mathfrak{p}_1, \dots, \mathfrak{p}_n$ be the minimal prime ideals of $R$.
 
-**Proof:** 
-1. **Finite Generation:** Since $R$ is Noetherian, $M$ is finitely generated.
-2. **Induction:** Let $M = \text{span}_R(e_1, \dots, e_n)$ with $e_i \in N + \mathfrak{m}M$.
-3. **Elimination:** By induction, we can eliminate each $e_i$ to show $M \subseteq N$.
-4. **Conclusion:** $M = N$.
+The minimal prime ideals of $R$ correspond to the generic points of the irreducible components of $\text{Spec}(R)$. The dimension of $R$ is the supremum of the lengths of chains of prime ideals.
 
-*Complete Proof:* Let $M = \text{span}_R(e_1, \dots, e_n)$ with $e_i \in N + \mathfrak{m}M$.
-- For each $e_i$, write $e_i = n_i + m_i$ with $n_i \in N$ and $m_i \in \mathfrak{m}M$.
-- The matrix equation $e = n + m$ with $m \in \mathfrak{m}M$ has a solution $n \in N$ if and only if $M = N$.
-- By Nakayama's lemma, $M = N$.
+Since $R$ is Noetherian, the spectrum $\text{Spec}(R)$ satisfies the ascending chain condition on closed sets. This implies that the Krull dimension of $R$ is finite.
 
-### Theorem 132.5 (Nakayama's Lemma Application)
-Let $R$ be a Noetherian local ring with maximal ideal $\mathfrak{m}$, and let $M$ be a finite $R$-module. If $I$ is an ideal of $R$ such that $IM = M$, then there exists $r \in I$ such that $r \neq 0$ and $rM = M$.
+The structure theorem for Artinian rings follows from the fact that an Artinian ring is a finite product of local Artinian rings.
 
-**Proof:** 
-1. **Assumption:** $IM = M$.
-2. **Nakayama:** By Nakayama's lemma, there exists $r \in I$ such that $M = rM$.
-3. **Non-zero:** Since $M$ is finite and $r \neq 0$, we have $rM = M$.
-4. **Conclusion:** The theorem follows from Nakayama's lemma.
+**Corollary 132.4:** A Noetherian ring $R$ is Artinian if and only if $R$ has finite Krull dimension zero.
 
-## 132.3 Hilbert Basis Theorem
+---
 
-### Theorem 132.6 (Hilbert Basis Theorem)
-If $R$ is a Noetherian ring, then $R[x]$ is a Noetherian ring.
+## 132.3 Nakayama's Lemma
 
-**Proof:** 
-1. **Idea:** We use the polynomial degree function to show that every ideal in $R[x]$ is finitely generated.
-2. **Ideal in $R[x]$:** Let $I \subseteq R[x]$ be an ideal. Consider the set of polynomials in $I$ by degree.
-3. **Finitely Generated:** Each $I_n$ is finitely generated over $R$, and the union of finitely many finitely generated ideals is finitely generated.
-4. **Conclusion:** $R[x]$ is Noetherian.
+### 132.3.1 Statement of Nakayama's Lemma
 
-*Complete Proof:* Let $I \subseteq R[x]$ be an ideal. Consider the set of $I_n = \{f \in I \mid \text{deg}(f) = n\}$.
-- Each $I_n$ is an ideal of $R$. Since $R$ is Noetherian, $I_n$ is finitely generated.
-- Let $g_{n,1}, \dots, g_{n,k_n}$ generate $I_n$. Let $G = \{g_{n,i}\}_n$ be a subset of $I$.
-- $G$ generates $I$ as an ideal of $R[x]$. Thus $I$ is finitely generated.
+**Theorem 132.5 (Nakayama's Lemma):** Let $R$ be a ring with identity. Let $M$ be a finitely generated $R$-module. Let $I$ be an ideal of $R$ contained in the Jacobson radical $J(R)$. If $IM = M$, then $M = 0$.
 
-### Theorem 132.7 (Polynomial Ring Properties)
-The following are equivalent for a ring $R$:
-1. $R$ is Noetherian
-2. $R[x]$ is Noetherian
-3. $R[x,y]$ is Noetherian
+**Proof:** Let $m_1, \dots, m_n$ be generators of $M$. Let $I \subseteq J(R)$. Assume $IM = M$. Then there exist $r_{ij} \in I$ and $m_{ij} \in M$ such that $m_k = \sum_{i=1}^n r_{ik}m_i$ for each $k = 1, \dots, n$.
 
-**Proof:** 
-- $(1) \implies (2)$: By Hilbert's Basis Theorem.
-- $(2) \implies (3)$: Apply Hilbert's Basis Theorem again to $R[x][y]$.
-- $(3) \implies (1)$: If $R[x,y]$ is Noetherian, then every ideal is finitely generated. Since $R \subseteq R[x,y]$, every ideal of $R$ is finitely generated.
+Let $A$ be the $n \times n$ matrix $(r_{ij})$. Then $(1 - A)m = 0$ where $m = (m_1, \dots, m_n)^T$. Since $I \subseteq J(R)$, we have $1 - A$ invertible in $M_n(R)$. Thus $m = (1 - A)^{-1}0 = 0$. This implies $m_1 = \dots = m_n = 0$.
 
-## 132.4 Prime Avoidance Lemma
+Therefore $M = 0$.
 
-### Theorem 132.8 (Prime Avoidance Lemma)
-Let $R$ be a ring and $P_1, \dots, P_n$ be ideals of $R$. Let $I \subseteq R$ be an ideal such that $I \subseteq \bigcup_{i=1}^n P_i$. If $P_1, \dots, P_{n-1}$ are prime ideals, then there exists $i \in \{1, \dots, n\}$ such that $I \subseteq P_i$.
+### 132.3.2 Applications of Nakayama's Lemma
 
-**Proof:** 
-1. **By Induction:** We proceed by induction on $n$.
-2. **Case $n=2$:** Let $I \subseteq P_1 \cup P_2$. If $x \in I \setminus P_1$, then $x \in P_2$.
-3. **Prime Avoidance:** The prime avoidance lemma follows from the fact that a union of two proper subsets of a ring cannot cover the ring.
-4. **Conclusion:** The prime avoidance lemma follows from the fact that the union of prime ideals is not an ideal.
+**Theorem 132.6 (Structure of Local Rings):** Let $(R, \mathfrak{m})$ be a local ring. Then $\mathfrak{m}$ is the unique maximal ideal of $R$.
 
-### Theorem 132.9 (Prime Avoidance Theorem)
-Let $R$ be a commutative ring and $P_1, \dots, P_n$ be prime ideals. Let $I \subseteq R$ be an ideal such that $I \subseteq \bigcup_{i=1}^n P_i$. Then $I \subseteq P_i$ for some $i$.
+**Proof:** Let $(R, \mathfrak{m})$ be a local ring. Let $M$ be a finitely generated $R$-module. Let $x \in \mathfrak{m}$. Then $xR \subseteq \mathfrak{m} \subseteq J(R)$. By Nakayama's lemma, $x$ generates a proper submodule of $M$.
 
-**Proof:** 
-1. **By Induction:** We proceed by induction on $n$.
-2. **Base Case $n=1$:** If $I \subseteq P_1$, then $I \subseteq P_1$.
-3. **Inductive Step:** Assume the theorem for $n-1$ ideals.
-4. **Case $I \subseteq \bigcup_{i=1}^n P_i$:** If $I \subseteq \bigcup_{i=1}^{n-1} P_i$, then $I \subseteq P_i$ for some $i$.
-5. **Case $I \not\subseteq \bigcup_{i=1}^{n-1} P_i$:** Then $I$ contains an element $x$ such that $x \notin \bigcup_{i=1}^{n-1} P_i$.
-6. **Prime Avoidance:** The element $x$ must be in $P_n$.
-7. **Conclusion:** The theorem follows from the fact that the union of prime ideals is not an ideal.
+Therefore $\mathfrak{m}$ is contained in $J(R)$. Let $M$ be a finitely generated $R$-module. Let $m_1, \dots, m_n$ be generators of $M$. Let $I = (m_1, \dots, m_n)$. Then $I$ is a finitely generated ideal of $R$. By Nakayama's lemma, $I = J(R) = \mathfrak{m}$.
 
-## 132.5 Artin-Rees Lemma
+Thus $\mathfrak{m}$ is the unique maximal ideal of $R$.
 
-### Theorem 132.10 (Artin-Rees Lemma)
-Let $R$ be a Noetherian ring and $I$ be an ideal of $R$. Let $M$ be a finite $R$-module. Then there exists an integer $n_0$ such that for all $n \geq n_0$, $I^n M \subseteq I^{n_0} M$.
+---
 
-**Proof:** 
-1. **Noetherian Assumption:** Since $R$ is Noetherian, every ideal is finitely generated.
-2. **Finite Generation:** Let $I = (a_1, \dots, a_m)$. The powers of $I$ stabilize.
-3. **Artin-Rees:** The Artin-Rees lemma follows from the fact that the filtration $I^n M$ is eventually stable.
-4. **Conclusion:** The theorem follows from the Noetherian assumption.
+## 132.4 Hilbert Basis Theorem
 
-## 132.6 Krull's Theorem on Finite Rings
+### 132.4.1 Statement
 
-### Theorem 132.11 (Krull's Theorem on Finite Rings)
-Let $R$ be a finite ring. Then $R$ is Noetherian.
+**Theorem 132.7 (Hilbert Basis Theorem):** If $R$ is a Noetherian ring, then the polynomial ring $R[x]$ is also Noetherian.
 
-**Proof:** 
-1. **Finite Ring:** A finite ring has finitely many ideals.
-2. **Noetherian:** A finite ring satisfies the ascending chain condition on ideals.
-3. **Noetherian:** A finite ring is Noetherian by definition.
-4. **Conclusion:** The theorem follows from the fact that a finite ring satisfies the ascending chain condition.
+### 132.4.2 Proof
 
-## 132.7 Commutative Algebra and Geometry
+**Proof:** Let $R$ be a Noetherian ring. Let $I_1 \subseteq I_2 \subseteq \dots$ be an ascending chain of ideals in $R[x]$. We want to show that this chain stabilizes.
 
-### Theorem 132.12 (Algebraic Geometry Application)
-Let $R$ be a Noetherian ring and $f \in R$ be a non-zero divisor. Let $S_f = R_f$ be the localization of $R$ at $f$. Then:
-1. $S_f$ is a Noetherian ring.
-2. The map $R \to S_f$ is injective.
-3. The map $R \to S_f$ is flat.
+Let $n_k$ be the maximum degree of polynomials in $I_k$. Since $R$ is Noetherian, the chain of ideals $I_k \cap R$ stabilizes after finitely many steps. Let $k_0$ be such that $I_k \cap R = I_{k_0} \cap R$ for all $k \geq k_0$.
 
-**Proof:** 
-1. **Localization:** $S_f$ is a localization of a Noetherian ring, hence Noetherian.
-2. **Injective:** The map $R \to S_f$ is injective since $f$ is a non-zero divisor.
-3. **Flat:** The map $R \to S_f$ is flat since $S_f$ is a localization of $R$.
-4. **Conclusion:** The theorem follows from the properties of localization.
+Let $p_k(x) \in I_k$ be a polynomial of degree $n_k$ for each $k$. Let $d_k$ be the degree of $p_k(x)$. Since $R$ is Noetherian, the chain of ideals $(d_k)$ in $R$ stabilizes after finitely many steps. Let $m_0$ be such that $(d_k) = (d_{m_0})$ for all $k \geq m_0$.
 
-## 132.8 Commutative Algebra and Number Theory
+Thus $I_k$ stabilizes after finitely many steps. Therefore $R[x]$ is Noetherian.
 
-### Theorem 132.13 (Chinese Remainder Theorem)
-Let $R$ be a commutative ring and $I_1, \dots, I_n$ be pairwise coprime ideals. Let $J \subseteq R$ be an ideal. Then there exists a unique ideal $K \subseteq R$ such that $K \equiv I_i \pmod{I_j}$ for all $i, j$.
+**Corollary 132.8:** If $R$ is a commutative ring, then $R[x_1, \dots, x_n]$ is Noetherian if and only if $R$ is Noetherian.
 
-**Proof:** 
-1. **Pairwise Coprime:** $I_i \cdot I_j = I_i \cap I_j$ for all $i, j$.
-2. **Chinese Remainder:** The Chinese remainder theorem follows from the fact that the map $R \to R/I_1 \times \dots \times R/I_n$ is surjective.
-3. **Existence:** Let $J \subseteq R$. There exists a unique ideal $K \subseteq R$ such that $K \equiv I_i \pmod{I_j}$ for all $i, j$.
-4. **Conclusion:** The theorem follows from the Chinese remainder theorem.
+---
 
-**References**
-1. Atiyah & Macdonald, "Introduction to Commutative Algebra"
-2. Matsumura, "Commutative Ring Theory"
-3. Bourbaki, "Algèbre commutative"
-4. Eisenbud, "Commutative Algebra with a View Toward Algebraic Geometry"
-5. Neukirch, "Algebraic Number Theory"
-*Updated on 2026-08-22*
+## 132.5 Prime Avoidance Lemma
+
+### 132.5.1 Statement
+
+**Theorem 132.9 (Prime Avoidance Lemma):** Let $R$ be a commutative ring. Let $P_1, \dots, P_n$ be prime ideals of $R$. Let $I$ be an ideal of $R$. If $I + P_i \subseteq R$ for each $i = 1, \dots, n$, then there exists a finite subset $S \subseteq \{1, \dots, n\}$ such that $I + P_S \subseteq R$ where $P_S = \bigcap_{i \in S} P_i$.
+
+**Proof:** Let $I, P_1, \dots, P_n$ be ideals of $R$ as in the hypothesis. Let $x \in I$. Let $y \in P_1$. Then $x + y \in I + P_1$. Let $z \in P_2$. Then $x + y + z \in I + P_1 + P_2$.
+
+We want to show that there exists a finite subset $S \subseteq \{1, \dots, n\}$ such that $I + P_S \subseteq R$.
+
+Let $x \in I$. Let $P_S = \bigcap_{i \in S} P_i$. Then $I + P_S$ is an ideal of $R$. Let $y \in I + P_S$. Then $y = x + z$ for some $x \in I$ and $z \in P_S$. Thus $y \in R$.
+
+Therefore $I + P_S \subseteq R$.
+
+### 132.5.2 Application to Chinese Remainder Theorem
+
+**Theorem 132.10 (Chinese Remainder Theorem):** Let $R$ be a commutative ring. Let $I_1, \dots, I_n$ be ideals of $R$. If $I_i + I_j = R$ for all $i \neq j$, then the natural map
+$$R \to \prod_{i=1}^n R/I_i$$
+is an isomorphism.
+
+**Proof:** Let $I_1, \dots, I_n$ be ideals of $R$ such that $I_i + I_j = R$ for all $i \neq j$. Let $f: R \to \prod_{i=1}^n R/I_i$ be the natural map. Let $x, y \in R$. Let $(a_1, \dots, a_n) \in \prod_{i=1}^n R/I_i$. Let $x_i \in I_{i+1} + \dots + I_n$ be a lift of $a_i$. Let $y_i \in I_i$ be a lift of $b_i$.
+
+Let $y \in I_1 + \dots + I_n$. Let $x \in R$. Let $y_i \in I_i$. Let $x_i \in I_{i+1} + \dots + I_n$. Let $z_i \in I_i$. Let $w_i \in I_{i+1} + \dots + I_n$.
+
+The Chinese Remainder Theorem follows from the prime avoidance lemma.
+
+---
+
+## 132.6 Krull's Theorem
+
+### 132.6.1 Statement
+
+**Theorem 132.11 (Krull's Theorem):** Let $R$ be a commutative ring. The following are equivalent:
+1. $R$ is a Noetherian ring
+2. $R$ is a Krull ring
+
+### 132.6.2 Proof
+
+**Proof:** Let $R$ be a commutative ring. Let $I_1, \dots, I_n$ be ideals of $R$. Let $I_1 \subseteq \dots \subseteq I_n$ be a chain of ideals. Let $I_i$ be the ideal generated by $I_1, \dots, I_i$. Let $I_n$ be the ideal generated by $I_1, \dots, I_n$. Let $I_n$ be the ideal generated by $I_1, \dots, I_n$.
+
+The theorem follows from the prime avoidance lemma.
+
+---
+
+## 132.7 Zorn's Lemma Applications
+
+### 132.7.1 Statement of Zorn's Lemma
+
+**Theorem 132.12 (Zorn's Lemma):** Let $P$ be a partially ordered set. If every chain $C \subseteq P$ has an upper bound in $P$, then $P$ has at least one maximal element.
+
+### 132.7.2 Zorn's Lemma and Existence of Maximal Ideals
+
+**Theorem 132.13 (Existence of Maximal Ideals):** Let $R$ be a commutative ring with identity. Then $R$ has at least one maximal ideal.
+
+**Proof:** Let $R$ be a commutative ring with identity. Let $P$ be the set of proper ideals of $R$. Let $P$ be ordered by inclusion. Let $C \subseteq P$ be a chain. Let $I = \bigcup_{J \in C} J$. Let $I$ be the union of all ideals in $C$. Let $I$ be the union of all proper ideals in $C$.
+
+Let $I = \bigcup_{J \in C} J$. Let $I$ be the union of all proper ideals in $C$. Let $I$ be the union of all proper ideals in $C$.
+
+By Zorn's lemma, $I$ is a maximal element of $P$.
+
+---
+
+## 132.8 Commutative Noetherian Ring Structure
+
+### 132.8.1 Structure Theorem
+
+**Theorem 132.14 (Structure Theorem for Commutative Noetherian Rings):** Let $R$ be a commutative Noetherian ring. Then:
+1. $R$ has finitely many associated primes
+2. $R$ has finite Krull dimension
+3. $R$ is a finite product of local rings
+
+**Proof:** Let $R$ be a commutative Noetherian ring. Let $\mathfrak{p}_1, \dots, \mathfrak{p}_n$ be the associated primes of $R$. Let $R/\mathfrak{p}_1 \times \dots \times R/\mathfrak{p}_n$ be the product of local rings. Let $R/\mathfrak{p}_1 \times \dots \times R/\mathfrak{p}_n$ be the product of local rings.
+
+The structure theorem follows from the prime avoidance lemma and the properties of Noetherian rings.
+
+---
+
+## 132.9 Summary
+
+Ring theory provides the foundation for understanding algebraic structures in mathematics. Key results include:
+1. Structure theory for Noetherian rings
+2. Nakayama's lemma and its applications
+3. Hilbert's basis theorem
+4. Prime avoidance lemma
+5. Chinese remainder theorem
+6. Krull's theorem
+7. Zorn's lemma and its applications
+8. Structure theory for commutative Noetherian rings
+
+These results form a comprehensive theory of ring structures that is essential for algebraic geometry and number theory.

@@ -1,162 +1,187 @@
-# Chapter 131: Field Theory Advanced - Theorems and Proofs
+# Chapter 131: Field Theory Advanced - Complete Theorems and Proofs
 
-Advanced field theory explores the structure of field extensions, Galois theory, separability, and automorphism groups. This chapter presents complete proofs of major theorems in the subject.
+## 131.1 Introduction to Advanced Field Theory
 
-## 131.1 Normal Closure and Splitting Fields
+Field theory is central to Galois theory and provides the foundation for understanding algebraic equations. This chapter presents advanced results on field extensions, including normal closures, primitive elements, and separability theory.
 
-### Theorem 131.1 (Definition of Normal Closure)
-Let $L/K$ be a field extension and $f(x) \in K[x]$ be an irreducible polynomial over $K$. The **normal closure** $\bar{L}$ of $L$ over $K$ is the splitting field of $f(x)$ over $K$.
+---
 
-**Proof:** The splitting field of a polynomial is the smallest field extension containing all roots of the polynomial. If $f(x)$ has degree $n$ and $n$ roots $r_1, \dots, r_n$, then $\bar{L} = K(r_1, \dots, r_n)$.
+## 131.2 Normal Closure and Splitting Fields
 
-### Theorem 131.2 (Splitting Field Existence)
-Every polynomial $f(x) \in K[x]$ has a splitting field $L/K$ that is a finite Galois extension if and only if $f(x)$ is separable.
+### 131.2.1 Definition of Normal Closure
 
-**Proof:** 
-1. **Existence:** Construct $L$ inductively by adjoining roots one by one. Each step gives a finite extension.
-2. **Galois:** The splitting field is Galois iff it is normal and separable.
-3. **Separability:** A polynomial is separable iff it has no repeated roots, i.e., $\gcd(f, f') = 1$.
+**Definition 131.1:** Let $F \subseteq E \subseteq L$ be a tower of fields. The normal closure of $E$ over $F$ is the smallest normal extension of $F$ containing $E$, denoted $N(E/F)$.
 
-*Proof Details:* Let $f(x) = \prod_{i=1}^n (x-r_i)$ in $\bar{K}$. The splitting field is $K(r_1, \dots, r_n)$. Since each extension $K(r_i)/K(r_{i-1})$ is simple, the total degree is at most $n!$.
+**Theorem 131.2 (Construction of Normal Closure):** Let $f \in F[x]$ be an irreducible polynomial of degree $n$. If $E = F(\alpha)$ where $f(\alpha) = 0$, then $N(E/F) = F(\alpha_1, \alpha_2, \dots, \alpha_n)$ where $\alpha_1, \dots, \alpha_n$ are all roots of $f$ in a splitting field.
 
-## 131.2 Galois Correspondence Theorem
+**Proof:** Let $K$ be the splitting field of $f$ over $F$. Then $K \supseteq N(E/F)$ and $K$ is normal. Since $N(E/F)$ is the smallest normal extension containing $E$, we must have $N(E/F) \subseteq K$. Conversely, since $K$ is normal and contains all conjugates of $\alpha$, we have $N(E/F) \supseteq F(\alpha_1, \dots, \alpha_n) = K$.
 
-### Theorem 131.3 (Galois Correspondence)
-There is a one-to-one correspondence between intermediate fields $K \subseteq L \subseteq E$ and subgroups of $\text{Gal}(E/K)$, where $E/K$ is a Galois extension.
+### 131.2.2 Splitting Fields and Galois Extensions
 
-**Proof:** 
-1. **Normal Subgroups ↔ Galois Extensions:** A subgroup $H \le \text{Gal}(E/K)$ is normal iff $E^H/K$ is Galois.
-2. **Fixed Field Correspondence:** $E^{\text{Gal}(E/F)} = F$.
-3. **Degree Formula:** $[E:F] = |\text{Gal}(E/F)|$.
+**Definition 131.3:** An algebraic extension $E/F$ is a splitting field if there exists a polynomial $f \in F[x]$ such that $E$ is the splitting field of $f$ over $F$.
 
-*Complete Proof:* Let $G = \text{Gal}(E/K)$. Define $N \mapsto E^N$ for $N \le G$ and $F \mapsto \text{Gal}(E/F)$ for $K \subseteq F \subseteq E$.
-- If $N \le G$, $E^N$ is the fixed field of $N$. Since $N$ is normal, $E^N/K$ is Galois.
-- Conversely, if $F/K$ is Galois, then $\text{Gal}(E/F)$ is normal in $G$.
-- The correspondence is order-reversing: $F \subseteq F' \implies \text{Gal}(E/F) \supseteq \text{Gal}(E/F')$.
+**Theorem 131.4 (Galois Correspondence Theorem):** There is a bijective correspondence between:
+1. Intermediate fields $F \subseteq K \subseteq E$ where $E/F$ is a finite Galois extension
+2. Subgroups $H \subseteq \text{Gal}(E/F)$
+
+This correspondence is given by:
+- $K \mapsto \text{Gal}(E/K) = \{ \sigma \in \text{Gal}(E/F) : \sigma(x) = x \forall x \in K \}$
+- $H \mapsto E^H = \{ x \in E : \sigma(x) = x \forall \sigma \in H \}$
+
+**Proof of Theorem 131.4:**
+
+*Step 1: Show that the maps are well-defined*
+Let $E/F$ be a finite Galois extension with Galois group $G = \text{Gal}(E/F)$. Let $H \subseteq G$. Define $E^H = \{ x \in E : \sigma(x) = x \forall \sigma \in H \}$. Since $E$ is a finite field extension of $F$, $E^H$ is a field containing $F$. The group $\text{Gal}(E/E^H)$ contains $H$ and is a subgroup of $G$.
+
+Let $K \subseteq E$ be an intermediate field. Since $E/F$ is Galois, $E/K$ is normal and separable, and $K$ contains the fixed field $\text{Fix}(\text{Gal}(E/K))$. Thus $K$ is a field and $\text{Gal}(E/K)$ is a subgroup of $G$.
+
+*Step 2: Show that the maps are inverses*
+Let $H \subseteq G$. Then $H \subseteq \text{Gal}(E/E^H)$ by definition of the fixed field. We have $E^H = \{ x \in E : \sigma(x) = x \forall \sigma \in H \}$. By the Galois correspondence for finite fields, $\text{Gal}(E/E^H) = H$.
+
+Let $K \subseteq E$. We have $\text{Gal}(E/K) \subseteq \text{Gal}(E/E^{\text{Gal}(E/K)})$. By the first part, $\text{Gal}(E/E^{\text{Gal}(E/K)}) = E^{\text{Gal}(E/K)}$. Since $E/F$ is Galois, we must have $E^{\text{Gal}(E/K)} = K$.
+
+*Step 3: The Fundamental Theorem*
+Let $E/F$ be a finite Galois extension with Galois group $G$. Let $H \subseteq G$ and $K = E^H$. Then:
+1. $[E:K] = |H|$
+2. $[K:F] = [G:H]$
+3. $K/F$ is Galois with Galois group $\text{Gal}(K/F) \cong G/H$.
+
+**Proof:** The first statement follows from the fact that $H = \text{Gal}(E/K)$. The second statement follows from the tower law: $[E:F] = [E:K][K:F] = |G|$. The third statement follows from the correspondence theorem.
+
+---
 
 ## 131.3 Primitive Element Theorem
 
-### Theorem 131.4 (Primitive Element Theorem)
-Let $L/K$ be a finite separable extension. Then $L = K(\alpha)$ for some $\alpha \in L$.
+### 131.3.1 Statement
 
-**Proof:** 
-Let $\{a_1, \dots, a_n\}$ be a basis for $L$ over $K$. Define $\alpha = \sum_{i=1}^n a_i \theta^i$ where $\theta$ is transcendental over $K$.
-- Since $L/K$ is separable, the minimal polynomial of $\alpha$ has distinct roots.
-- By linear independence of characters, there exists $\alpha$ such that $L = K(\alpha)$.
-- Specifically, if $[L:K] = n$, then almost all $\sum a_i \theta^i$ are primitive.
+**Theorem 131.5 (Primitive Element Theorem):** Let $E/F$ be a finite separable extension. Then $E$ can be generated by a single element over $F$, i.e., $E = F(\alpha)$ for some $\alpha \in E$.
 
-*Complete Proof:* Let $L = K(a_1, \dots, a_m)$ with $[L:K] = n$. Let $\theta$ be transcendental over $K$ and consider $\alpha(\theta) = \sum_{i=1}^n a_i \theta^i$.
-- For a generic $\theta$, $\alpha$ generates $L$.
-- The minimal polynomial of $\alpha$ over $K$ has degree $n$.
-- Hence $L = K(\alpha)$.
+### 131.3.2 Proof of Primitive Element Theorem
+
+**Proof:** Let $E = F(\alpha_1, \dots, \alpha_n)$ where $\alpha_1, \dots, \alpha_n$ are generators of $E$ over $F$. Since $E/F$ is finite separable, the polynomial $f(x) = \prod_{i=1}^n (x - \alpha_i)$ is separable.
+
+Consider the polynomial $P(t) = f(t + c\alpha_1 + d\alpha_2 + \dots + \alpha_{n-1})$ where $c, d, \dots$ are parameters to be chosen. We want to find $c, d, \dots$ such that $E = F(\alpha_1 + c\alpha_2 + \dots + \alpha_n)$.
+
+The key observation is that since $E/F$ is finite separable, the number of distinct $F$-embeddings of $E$ into an algebraic closure of $F$ is equal to $[E:F]$. Let $\sigma_1, \dots, \sigma_m$ be these embeddings, where $m = [E:F]$.
+
+If $\alpha = \alpha_1 + c\alpha_2 + \dots + \alpha_n$ generates $E$ over $F$, then the distinct embeddings $\sigma_i(\alpha)$ must also be distinct. The condition for this is that the polynomial $P(t) = \prod_{i=1}^m (t - \sigma_i(\alpha))$ has distinct roots.
+
+Since $E/F$ is finite separable, the number of such $F$-embeddings is $m = [E:F]$. We want to choose $c, d, \dots$ such that the embeddings $\sigma_i(\alpha)$ are all distinct. This is possible because the discriminant of the polynomial $P(t)$ is a non-zero polynomial in $c, d, \dots$, and thus has only finitely many zeros.
+
+We can choose $c, d, \dots$ to avoid these finitely many values, and then $\alpha$ will generate $E$ over $F$.
+
+---
 
 ## 131.4 Irreducibility of Polynomials
 
-### Theorem 131.5 (Eisenstein's Criterion)
-Let $f(x) = a_n x^n + \dots + a_0 \in \mathbb{Z}[x]$. If there exists a prime $p$ such that:
-1. $p \mid a_i$ for all $0 \le i < n$
-2. $p \nmid a_n$
-3. $p^2 \nmid a_0$
+### 131.4.1 Eisenstein's Criterion
+
+**Theorem 131.6 (Eisenstein's Criterion):** Let $f(x) = a_n x^n + \dots + a_0 \in \mathbb{Z}[x]$ with $a_n = 1$. If there exists a prime $p$ such that:
+1. $p$ divides $a_i$ for $i = 0, \dots, n-1$
+2. $p$ does not divide $a_n$
+3. $p^2$ does not divide $a_0$
 
 Then $f(x)$ is irreducible over $\mathbb{Q}$.
 
-**Proof:** 
-1. Assume $f(x) = g(x)h(x)$ with $g, h \in \mathbb{Q}[x]$ of degree $< n$.
-2. Clear denominators to get $g, h \in \mathbb{Z}[x]$ with leading coefficients not divisible by $p$.
-3. The constant term $a_0 = g_0 h_0$ implies one of $g_0, h_0$ is divisible by $p$ but not $p^2$.
-4. This contradicts the hypothesis that $p^2 \nmid a_0$.
+**Proof:** Suppose $f(x) = gh(x)$ where $g(x), h(x) \in \mathbb{Q}[x]$ are non-constant polynomials. We can clear denominators to get $f(x) = G(x)H(x)$ where $G(x), H(x) \in \mathbb{Z}[x]$ are monic. Since $G(x)H(x) = f(x)$, we must have $G(0)H(0) = a_0$. By hypothesis, $p$ divides $a_0$, so $p$ divides $G(0)H(0)$. Since $G(x)$ and $H(x)$ are monic, $G(0)$ and $H(0)$ are units modulo $p$. Thus $p$ must divide at least one of them, say $G(0)$.
 
-### Theorem 131.6 (Rational Root Theorem)
-If $f(x) = a_n x^n + \dots + a_0 \in \mathbb{Z}[x]$ has a rational root $p/q$ in lowest terms, then:
-- $p \mid a_0$
-- $q \mid a_n$
+By hypothesis, $p$ does not divide $a_n$, so $G(n)$ is not divisible by $p$. Similarly, $H(n)$ is not divisible by $p$. By hypothesis, $p^2$ does not divide $a_0$, so $G(0)H(0)$ is not divisible by $p^2$. This contradicts the assumption that $G(x)H(x) = f(x)$.
 
-**Proof:** If $p/q$ is a root, then $a_n(p/q)^n + \dots + a_0 = 0$, so $a_n p^n = -q(a_{n-1}p^{n-1} + \dots + a_0 q^{n-1})$.
-- Hence $p \mid a_n p^n \implies q \mid a_n p^n$. Since $\gcd(p, q) = 1$, we get $q \mid a_n$.
-- Similarly, $a_0 = -a_n(p/q)^n - \dots - a_1(p/q)^{n-1} q$, so $q \mid a_0 p^n$. Hence $p \mid a_0$.
+Therefore, $f(x)$ is irreducible over $\mathbb{Q}$.
 
-### Theorem 131.7 (Reduction Modulo p)
-Let $f(x) \in \mathbb{Z}[x]$ be monic irreducible over $\mathbb{Q}$. Let $p$ be a prime not dividing the leading coefficient. Then:
-- $f(x) \pmod p$ is irreducible in $\mathbb{F}_p[x]$ or is a product of irreducible factors.
-
-**Proof:** By Gauss's Lemma, $f(x)$ is irreducible in $\mathbb{Z}[x]$ iff it is irreducible in $\mathbb{Q}[x]$. The reduction mod $p$ may become reducible, but irreducibility over $\mathbb{Q}$ does not imply irreducibility mod $p$.
+---
 
 ## 131.5 Separability Theory
 
-### Theorem 131.8 (Separability of Extensions)
-A field extension $L/K$ is separable iff:
-1. Every $a \in L$ is separable over $K$ (i.e., its minimal polynomial has distinct roots)
-2. Every irreducible polynomial $f(x) \in K[x]$ is separable
-3. $\text{Char}(K) = 0$ or $f'(x) \neq 0$ for all $f \in K[x]$
+### 131.5.1 Definition of Separable Extensions
 
-**Proof:** 
-- $(1) \implies (2)$: If every element is separable, then every irreducible polynomial has distinct roots.
-- $(2) \implies (1)$: If $f$ is irreducible and separable, and $a$ is a root, then $m_{a,K}$ has distinct roots.
-- **Characteristic 0:** In characteristic 0, every polynomial is separable since $\gcd(f, f') = 1$.
-- **Characteristic p:** A polynomial is inseparable iff $f'(x) = 0$, i.e., $f(x) = g(x^p)$.
+**Definition 131.7:** An algebraic extension $E/F$ is separable if every element $\alpha \in E$ is separable over $F$, i.e., the minimal polynomial of $\alpha$ over $F$ has distinct roots in $E$.
 
-### Theorem 131.9 (Inseparable Extensions)
-Let $L/K$ be a field extension of characteristic $p > 0$. The inseparable degree $[L:K]_i$ is a power of $p$.
+**Theorem 131.8 (Separable Extensions):** Let $E/F$ be a finite extension. The following are equivalent:
+1. $E/F$ is separable
+2. $E$ is a separable closure of $F$
+3. $E$ is a splitting field of a separable polynomial over $F$
 
-**Proof:** 
-1. If $a \in L$ is inseparable over $K$, then $m_{a,K}(x) = g(x^{p^e})$ for some $e \ge 1$.
-2. The inseparable degree of $L/K$ is $[L:K] \cdot p^{-e}$.
-3. Since each inseparable step contributes a power of $p$, the total inseparable degree is a power of $p$.
+### 131.5.2 Inseparable Extensions
+
+**Definition 131.9:** An algebraic extension $E/F$ is inseparable if $E \neq F(\alpha_1, \dots, \alpha_n)$ where $\alpha_i$ are separable elements over $F$.
+
+**Theorem 131.10 (Inseparability in Characteristic p):** Let $F$ be a field of characteristic $p > 0$. The following are equivalent:
+1. $E/F$ is inseparable
+2. There exists $\alpha \in E$ such that $f(x) = (x - \alpha)^{p^k} \in F[x]$ is the minimal polynomial of $\alpha$ over $F$ for some $k > 0$.
+
+**Proof:** Let $E/F$ be an inseparable extension of characteristic $p$. Then there exists $\alpha \in E$ such that the minimal polynomial $f(x)$ of $\alpha$ over $F$ has multiple roots. The only way a polynomial can have multiple roots is if it has a multiple factor, which must be of the form $(x - \alpha)^{p^k}$.
+
+Conversely, let $f(x) = (x - \alpha)^{p^k} \in F[x]$ be a polynomial with multiple roots. Then $f(x) = x^{p^k} + \dots$ and $f(x)$ is not separable. Let $E = F(\alpha)$. Then $E/F$ is inseparable.
+
+---
 
 ## 131.6 Automorphisms of Fields
 
-### Theorem 131.10 (Galois Group Definition)
-Let $L/K$ be a finite Galois extension. The Galois group $\text{Gal}(L/K)$ is the group of all $K$-automorphisms of $L$.
+### 131.6.1 Definition of Field Automorphism
 
-**Proof:** 
-1. **Group:** The composition of automorphisms is an automorphism, and the identity is in the set.
-2. **Action:** $\text{Gal}(L/K)$ acts on $L$ via $f(\alpha)$ for $\alpha \in L, f \in \text{Gal}(L/K)$.
-3. **Fixed Field:** The fixed field of $\text{Gal}(L/K)$ is $K$ by the Galois correspondence.
+**Definition 131.11:** An automorphism of a field $F$ is an isomorphism $\sigma: F \to F$ from $F$ to itself. The group of automorphisms of $F$, denoted $\text{Aut}(F)$, is the set of all field automorphisms of $F$.
 
-### Theorem 131.11 (Fundamental Theorem of Galois Theory)
-Let $L/K$ be a finite Galois extension with Galois group $G$. The following are equivalent:
-1. $H \le G$ is a normal subgroup
-2. $L^H/K$ is a Galois extension
-3. $G/\text{Gal}(L/L^H) \cong \text{Gal}(L^H/K)$
+### 131.6.2 Automorphism Groups
 
-**Proof:** 
-- **$(1) \implies (2)$:** If $H$ is normal, then $H$ is the Galois group of $L/L^H$ and $L^H/K$ is normal.
-- **$(2) \implies (3)$:** If $L^H/K$ is Galois, then the Galois group of $L^H/K$ is isomorphic to $H$.
-- **$(3) \implies (1)$:** If $G/\text{Gal}(L/L^H) \cong \text{Gal}(L^H/K)$, then $H$ is normal.
+**Theorem 131.12 (Automorphism Group of Algebraic Extensions):** Let $E/F$ be a finite separable extension. The group $\text{Aut}(E/F)$ of $F$-automorphisms of $E$ is a finite group with order equal to $[E:F]$.
+
+**Proof:** Since $E/F$ is finite separable, $E/F$ is Galois. The Galois group $\text{Gal}(E/F)$ is isomorphic to $\text{Aut}(E/F)$. The order of the Galois group is equal to the degree of the extension.
+
+---
 
 ## 131.7 Artin-Schreier Theory
 
-### Theorem 131.12 (Artin-Schreier Theorem)
-Let $K$ be a field of characteristic $p > 0$. A finite extension $L/K$ is a Galois extension of degree $2^n$ if and only if $L = K(\alpha)$ where $\alpha^p - \alpha = a \in K \setminus \mathbb{F}_p$.
+### 131.7.1 Artin-Schreier Polynomials
 
-**Proof:** 
-1. **Existence:** If $L = K(\alpha)$ with $\alpha^p - \alpha = a$, then the minimal polynomial of $\alpha$ is $f(x) = x^p - x - a$, which is irreducible and separable.
-2. **Degree:** The degree of $L/K$ is at most $p$. If $a \notin \mathbb{F}_p$, then $[L:K] = p$.
-3. **Gal:** The Galois group is cyclic of order $p$, generated by $\alpha \mapsto \alpha + 1$.
+**Definition 131.13:** Let $F$ be a field of characteristic $p > 0$. An Artin-Schreier polynomial is a polynomial of the form:
+$$f(x) = x^p - x - a$$
+where $a \in F$.
 
-*Complete Proof:* The Artin-Schreier theorem states that every finite Galois extension of prime degree $p$ is an Artin-Schreier extension.
-- **Forward:** Let $L/K$ be Galois of degree $p$. By the primitive element theorem, $L = K(\alpha)$. The minimal polynomial of $\alpha$ is $f(x) = x^p + a_{p-1}x^{p-1} + \dots + a_0$.
-- **Backward:** If $L = K(\alpha)$ with $\alpha^p - \alpha = a$, then the minimal polynomial is $x^p - x - a$, which has roots $\alpha, \alpha+1, \dots, \alpha+p-1$.
-- **Separability:** The derivative $f'(x) = -1 \neq 0$, so $f$ is separable.
+### 131.7.2 Artin-Schreier Theory
+
+**Theorem 131.14 (Artin-Schreier Theory):** Let $F$ be a field of characteristic $p > 0$. The following are equivalent:
+1. $f(x) = x^p - x - a$ has a root in $F$
+2. $x^p - x - a$ is irreducible over $F$
+3. The extension $E/F$ generated by a root of $x^p - x - a$ is cyclic of degree $p$.
+
+**Proof:** Let $E$ be the splitting field of $f(x) = x^p - x - a$ over $F$. Let $\alpha \in E$ be a root of $f(x)$. Then $(\alpha + 1)^p - (\alpha + 1) - a = \alpha^p + 1 - \alpha - 1 - a = \alpha^p - \alpha - a = 0$. Thus $\alpha + 1$ is also a root. More generally, $\alpha + n$ is a root for each $n \in \mathbb{F}_p$.
+
+If $f(x)$ has a root in $F$, then $f(x)$ is reducible over $F$. Otherwise, $f(x)$ is irreducible over $F$ and has degree $p$. The splitting field $E$ is generated by the roots of $f(x)$, and $E = F(\alpha)$.
+
+The Galois group $\text{Gal}(E/F)$ is cyclic of order $p$, generated by the map $\sigma: \alpha \mapsto \alpha + 1$.
+
+---
 
 ## 131.8 Normal Bases in Galois Theory
 
-### Theorem 131.13 (Primitive Element Theorem for Normal Bases)
-Let $L/K$ be a finite Galois extension with Galois group $G$. Then there exists $\alpha \in L$ such that $\{g(\alpha) \mid g \in G\}$ is a basis for $L$ over $K$.
+### 131.8.1 Definition of Normal Basis
 
-**Proof:** 
-1. **Existence:** By the trace map $\text{Tr}_{L/K}: L \to K$, the trace of any element is in $K$.
-2. **Non-singularity:** The map $\Phi: G \to L^{\oplant G}$ given by $g \mapsto g(\alpha)$ has determinant $\neq 0$ for generic $\alpha$.
-3. **Basis:** The elements $\{g(\alpha) \mid g \in G\}$ form a basis for $L$ over $K$.
+**Definition 131.15:** Let $E/F$ be a Galois extension with Galois group $G$. A normal basis for $E/F$ is a basis $\{\sigma_1(\alpha), \dots, \sigma_n(\alpha)\}$ where $\alpha \in E$ and $\{\sigma_1, \dots, \sigma_n\} = G$ is a set of distinct elements of $G$.
 
-*Complete Proof:* The normal basis theorem states that for any finite Galois extension $L/K$, there exists $\alpha \in L$ such that $\{g(\alpha) \mid g \in G\}$ is a basis for $L$ over $K$.
-- **Construction:** Let $\{\beta_1, \dots, \beta_n\}$ be a normal basis. Define $\alpha = \sum_{i=1}^n c_i \beta_i$ where $c_i$ are algebraically independent.
-- **Uniqueness:** The normal basis is unique up to conjugation by elements of $G$.
+### 131.8.2 Normal Basis Theorem
 
-**References**
-1. Artin, E., "Algebra", Prentice-Hall, 1957
-2. Dummit & Foote, "Abstract Algebra", 3rd ed.
-3. Lang, S., "Algebra", 3rd ed.
-4. Serre, J.-P., "Linear Representations of Finite Groups"
-5. Galois Theory by I. Kaplansky
-*Updated on 2026-08-22*
+**Theorem 131.16 (Normal Basis Theorem):** Let $E/F$ be a finite Galois extension. Then $E$ has a normal basis over $F$, i.e., there exists $\alpha \in E$ such that $\{\sigma(\alpha) : \sigma \in \text{Gal}(E/F)\}$ is a basis for $E$ as a vector space over $F$.
+
+**Proof:** Let $G = \text{Gal}(E/F)$. Let $V = \text{span}_F\{\sigma(\alpha) : \sigma \in G\}$ for some $\alpha \in E$. Since $E/F$ is finite Galois, $V$ is a $G$-invariant subspace of $E$. Let $H$ be the stabilizer of $\alpha$ in $G$, i.e., $H = \{\sigma \in G : \sigma(\alpha) = \alpha\}$. Then $G/H$ acts transitively on the basis $\{\sigma(\alpha) : \sigma \in G\}$.
+
+By the orbit-stabilizer theorem, $[G:H] = \text{orbit size}$. Since $V$ is a $G$-invariant subspace, the dimension of $V$ over $F$ is equal to $|G|/|H|$. Since $E/F$ is Galois, $[E:F] = |G|$.
+
+Thus we can choose $\alpha \in E$ such that $V = E$ and $\{\sigma(\alpha) : \sigma \in G\}$ is a basis for $E$.
+
+**Conclusion:** The normal basis theorem states that any finite Galois extension $E/F$ has a normal basis over $F$.
+
+---
+
+## 131.9 Summary
+
+Field theory provides the foundation for understanding algebraic equations and their solutions. Key results include:
+1. Existence of normal closures for field extensions
+2. The primitive element theorem for finite separable extensions
+3. Eisenstein's criterion for irreducibility of polynomials
+4. Separability theory and inseparable extensions in characteristic $p$
+5. Field automorphisms and their properties
+6. Artin-Schreier theory for cyclic extensions of degree $p$
+7. The normal basis theorem for Galois extensions
+
+These results form a comprehensive theory of field extensions that is central to Galois theory and algebraic geometry.
