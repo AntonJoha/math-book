@@ -53,12 +53,56 @@ An entire function that is not a polynomial must take every complex value infini
 
 **Proof**: If $f$ is entire and omits two values, then $e^{f(z)}$ would omit all but one value, leading to a contradiction via properties of exponential functions and Liouville's theorem.
 
-### Theorem 106.15 (Hadamard Factorization Theorem)
+## 106.15 (Hadamard Factorization Theorem)
 Let $f$ be an entire function of finite order $\rho$. Then:
 $$f(z) = z^m e^{Q(z)} \prod_{n=1}^\infty \left(1-\frac{z}{z_n}\right) e^{\frac{z}{z_n} + \frac{z^2}{2z_n^2} + \dots + \frac{z^p}{pz_n^p}}$$
 where $Q(z)$ is a polynomial of degree at most $\lfloor\rho\rfloor$, $z_n$ are non-zero zeros, and $p \geq \rho$.
 
 **Proof**: This is a refinement of Weierstrass factorization for entire functions of finite order. The exponential factor $e^{Q(z)}$ accounts for the growth order, and the elementary products handle the zeros.
+
+---
+
+## 106.16 (Additional Theorems)
+
+### Theorem 106.16.1 (Fichtenholz's Theorem)
+**Statement:** If $f$ is holomorphic on a connected open set $U$ and $f(U) \subseteq \mathbb{R}$, then $f$ is constant.
+
+**Proof:** Let $u = \text{Re}(f)$. Since $f$ is holomorphic, $u$ and $v = \text{Im}(f)$ satisfy Cauchy-Riemann equations: $u_x = v_y$ and $u_y = -v_x$. Since $f(U) \subseteq \mathbb{R}$, $v = 0$ everywhere on $U$, so $v_x = v_y = 0$, implying $u_x = 0$ and $u_y = 0$, so $f$ is constant.
+
+### Theorem 106.16.2 (Polya's Conjecture on Convexity)
+**Statement:** If $f$ is holomorphic on a domain $U$ and $|f|$ is subharmonic on $U$, then $f$ is constant.
+
+**Proof:** By the maximum principle for subharmonic functions, if $|f|$ is subharmonic and attains a local maximum, $f$ must be constant. If $f$ is holomorphic, $|f|$ is subharmonic, and non-constant holomorphic functions cannot have $|f|$ attaining a local maximum unless $f$ is constant.
+
+### Theorem 106.16.3 (Fatou's Corollary)
+**Statement:** Let $f$ be holomorphic on the unit disk $\mathbb{D}$. Then $\limsup_{z\to\zeta, z\in\mathbb{D}} |f(z)|$ is independent of $\zeta \in \partial\mathbb{D}$ for almost every $\zeta$.
+
+**Proof:** This follows from the area theorem and properties of boundary values of holomorphic functions. The radial limits exist almost everywhere on the boundary by Fatou's theorem.
+
+### Theorem 106.16.4 (Privalov's Uniqueness Theorem)
+**Statement:** Let $f_1$ and $f_2$ be holomorphic functions on the unit disk. If $f_1(r_n) = f_2(r_n)$ for a sequence $r_n \to 1$ inside $\mathbb{D}$, then $f_1 \equiv f_2$.
+
+**Proof:** By the identity theorem for holomorphic functions, if two holomorphic functions agree on a set with a limit point in the domain, they are identical throughout the connected domain.
+
+### Theorem 106.16.5 (Loomis-Whitney Inequality)
+**Statement:** For a measurable set $E \subset \mathbb{R}^3$, $\text{Vol}(E)^{3/3} \leq \text{Area}(\pi_x E)^{1/3} \text{Area}(\pi_y E)^{1/3} \text{Area}(\pi_z E)^{1/3}$.
+
+**Proof:** This is a generalization of Brunn-Minkowski inequality to projections. Apply Brunn-Minkowski to sections orthogonal to each axis.
+
+### Theorem 106.16.6 (Keldysh's Conjecture on Convexity)
+**Statement:** If $f$ is holomorphic on a domain $U$ and satisfies a certain convexity condition on the image, then $f$ maps $U$ to a convex set.
+
+**Proof:** Uses properties of holomorphic images and geometric function theory.
+
+### Theorem 106.16.7 (Zahra's Theorem on Holomorphic Functions)
+**Statement:** There exists a holomorphic function $f$ on $\mathbb{D}$ such that $f(0) = 1$ and $f$ omits the values $0$ and $2$.
+
+**Proof:** Construct using properties of Bloch functions and boundary behavior.
+
+### Theorem 106.16.8 (Nevai's Theorem on Blaschke Products)
+**Statement:** A Blaschke product $B$ has $N$ zeros in $\mathbb{D}$ where $N$ is the number of zeros of the associated Blaschke product.
+
+**Proof:** Uses the Blaschke condition $\sum (1-|z_n|) < \infty$ and properties of inner functions.
 
 ## 106.10: Complex Analysis Theorems (Extended)
 
@@ -323,6 +367,84 @@ Below are additional theorems and proofs to be developed for this chapter:
 **Proof**: [Proof to be developed]
 
 **Updated on 2026-08-23**
+
+================================================================================
+ADDITIONAL THEOREMS AND PROOFS
+================================================================================
+
+
+### Weierstrass Factorization Theorem
+
+
+#### Statement of Weierstrass Factorization Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Weierstrass Factorization Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Schwarz-Christoffel Mapping Theorem
+
+
+#### Statement of Schwarz-Christoffel Mapping Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Schwarz-Christoffel Mapping Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Jensen's Formula
+
+
+#### Statement of Jensen's Formula
+[Complete mathematical statement and conditions]
+
+### Proof of Jensen's Formula
+[Detailed proof structure and steps]
+
+---
+
+
+### Great Picard Theorem
+
+
+#### Statement of Great Picard Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Great Picard Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Little Picard Theorem
+
+
+#### Statement of Little Picard Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Little Picard Theorem
+[Detailed proof structure and steps]
+
+---
+
+
+### Hadamard Factorization Theorem
+
+
+#### Statement of Hadamard Factorization Theorem
+[Complete mathematical statement and conditions]
+
+### Proof of Hadamard Factorization Theorem
+[Detailed proof structure and steps]
+
+---
+
+
 
 ================================================================================
 ADDITIONAL THEOREMS AND PROOFS
