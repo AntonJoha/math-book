@@ -1,0 +1,172 @@
+\chapter{Topology - Advanced Theorems and Proofs}
+\label{ch:topology-advanced}
+
+\section{Connectedness and Components}
+\label{sec:topology-connectedness}
+
+A topological space $X$ is \textbf{connected} if it cannot be written as the union of two disjoint nonempty open sets.
+
+\begin{theorem}[Equivalences of Connectedness]
+\label{thm:equivalences-connectedness}
+The following are equivalent for a topological space $X$:
+\begin{enumerate}
+\item $X$ is connected
+\item $X$ contains no nonempty connected proper subsets whose complements are disconnected
+\item For any continuous functions $f, g: X \to \R$, if $f(X) \cap g(X) \neq \emptyset$, then $f = g$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(1) $\Rightarrow$ (2):} Let $A \subset X$ be a connected proper subset. If $A$ is not $X$, then $X \setminus A$ is nonempty. If $X$ is connected, $X \setminus A$ must be connected.
+\end{proof}
+
+\begin{theorem}[Components and Disjointness]
+\label{thm:components-theorem}
+The components of $X$ are connected disjoint subspaces of $X$ whose union is $X$, such that each nonempty connected subspace of $X$ intersects only one of them.
+\end{theorem}
+
+\begin{proof}
+Let $\{C_\alpha\}$ be the set of components of $X$.
+
+\textbf{1.} Each $C_\alpha$ is connected by definition.
+
+\textbf{2.} $C_\alpha \cap C_\beta = \emptyset$ for $\alpha \neq \beta$:
+If $C_\alpha \cap C_\beta \neq \emptyset$, let $x \in C_\alpha \cap C_\beta$. Since $C_\alpha$ is connected, any set containing $x$ and contained in a component must intersect $C_\alpha$. But components are maximal connected subsets, so $C_\alpha = C_\beta$.
+
+\textbf{3.} $\bigcup_\alpha C_\alpha = X$: For any $x \in X$, the closure $\overline{\{x\}}$ is connected (as a singleton is connected). Thus $\overline{\{x\}} \subseteq C_\alpha$ for some $\alpha$, so $x \in C_\alpha$.
+
+\textbf{4.} Each connected subspace intersects exactly one component: Let $Y \subset X$ be connected and $C_\alpha$ be a component. If $Y \cap C_\alpha = \emptyset$, then $Y \subseteq X \setminus C_\alpha$, which is a union of components, hence disconnected. So $Y$ must intersect exactly one component.
+\end{proof}
+
+\section{Compactness Theorems}
+\label{sec:compactness-theorems}
+
+A space $X$ is \textbf{compact} if every open cover has a finite subcover.
+
+\begin{theorem}[Heine-Borel Theorem]
+\label{thm:heine-borel}
+A subset $S \subset \R^n$ is compact if and only if $S$ is closed and bounded.
+\end{theorem}
+
+\begin{proof}
+\textbf{(Only if:) } If $S$ is compact, let $S = [a_1, b_1] \times \cdots \times [a_n, b_n] \subset S$. Then $S$ is bounded. Also, if $(x_k)$ is a sequence in $S$, it has a convergent subsequence (by Bolzano-Weierstrass), so the limit is in $S$ (compactness implies sequential compactness).
+
+\textbf{(If:) } Let $S = \overline{S} \cap B$, where $\overline{S}$ is closed and $B$ is bounded. For any open cover $\{U_\alpha\}$ of $S$, $S \subset \bigcup_\alpha U_\alpha$. Since $\overline{S}$ is compact, $\{\alpha : U_\alpha \cap \overline{S} \neq \emptyset\}$ has a finite subcover of $\overline{S}$, hence of $S$.
+\end{proof}
+
+\begin{theorem}[Tychonoff's Theorem]
+\label{thm:tychonoff}
+The product of any collection of compact spaces is compact.
+\end{theorem}
+
+\begin{proof}
+We use the finite intersection property: A family of compact spaces $\{K_i\}_{i \in I}$ has compact product $\prod K_i$ iff every finite subcollection has nonempty intersection of any closed sets.
+
+Let $\{K_i\}$ be compact spaces. Let $\mathcal{F}$ be a family of closed subsets of $\prod K_i$ with the finite intersection property. For each finite $J \subset I$ and each $K \in \mathcal{F}$, let $\pi_J(K)$ be the projection of $K$ onto $\prod_{j \in J} K_j$. By the finite intersection property, $\bigcap_{j \in J} \pi_j(K)$ is nonempty.
+
+By compactness of each $K_i$, $\bigcap_{j \in J} K_j \neq \emptyset$. Thus $\bigcap_{K \in \mathcal{F}} K \neq \emptyset$, so $\prod K_i$ is compact.
+\end{proof}
+
+\section{Brouwer's Fixed Point Theorem}
+\label{sec:brouwer-fixed-point}
+
+Let $D^n$ be the closed unit disk in $\R^n$. The \textbf{Brouwer fixed point theorem} states that every continuous function $f: D^n \to D^n$ has a fixed point.
+
+\begin{theorem}[Brouwer Fixed Point Theorem]
+\label{thm:brouwer-fixed-point}
+Every continuous function $f: D^n \to D^n$ has a fixed point $x \in D^n$ such that $f(x) = x$.
+\end{theorem}
+
+\begin{proof}[1D Version]
+For $n = 1$, $D^1 = [-1, 1]$. Define $g(x) = f(x) - x$. Then $g: [-1, 1] \to \R$ is continuous.
+
+If $f(-1) \neq -1$, then either $f(-1) > -1$ or $f(-1) < -1$. Similarly for $f(1)$.
+
+Case 1: $f(-1) > -1$ or $f(1) < 1$. By the Intermediate Value Theorem, $g(-1) = f(-1) - (-1) > 0$ or $g(1) = f(1) - 1 < 0$. Since $g$ is continuous, there exists $x \in (-1, 1)$ such that $g(x) = 0$, so $f(x) = x$.
+
+Case 2: $f(-1) \leq -1$ and $f(1) \geq 1$. But $f$ maps $D^1$ to itself, so $-1 \leq f(-1) \leq 1$ and $-1 \leq f(1) \leq 1$. The only way this happens is if $f(-1) = -1$ and $f(1) = 1$, so $x = -1$ and $x = 1$ are fixed points.
+
+For higher dimensions, the proof uses homology or the no-retraction theorem.
+\end{proof}
+
+\section{Compactness and Connectedness}
+\label{sec:compactness-connectedness}
+
+Compactness and connectedness are intimately related through various theorems.
+
+\begin{theorem}[Compact Implies Quasi-Compactness]
+\label{thm:compact-quasi-compact}
+If $X$ is a compact Hausdorff space and $Y \subset X$, then the closure $\overline{Y}$ is compact.
+\end{theorem}
+
+\begin{proof}
+Let $\{U_\alpha\}$ be an open cover of $\overline{Y}$. Since $Y \subset \overline{Y}$, $\{U_\alpha\}$ also covers $Y$. By compactness of $Y$, there exists a finite subcover $\{U_{\alpha_1}, \ldots, U_{\alpha_n}\}$ covering $Y$. Then $\overline{Y} \subset \overline{Y}$ is compact.
+\end{proof}
+
+\begin{theorem}[Path-Connected Implies Connected]
+\label{thm:path-connected-connected}
+If $X$ is path-connected, then $X$ is connected.
+\end{theorem}
+
+\begin{proof}
+Let $X = U \cup V$ with $U, V$ disjoint nonempty open sets. Let $x \in U, y \in V$. If there exists a path $\gamma: [0, 1] \to X$ with $\gamma(0) = x$ and $\gamma(1) = y$, then the image $\gamma([0, 1])$ is connected (as $[0, 1]$ is connected). Thus $\gamma([0, 1]) \subseteq U$ or $\gamma([0, 1]) \subseteq V$, which contradicts $\gamma(0) \in U$ and $\gamma(1) \in V$.
+\end{proof}
+
+\section{Examples of Compact and Connected Spaces}
+\label{sec:compact-connected-examples}
+
+\begin{example}[Compact but Not Connected]
+\label{ex:compact-not-connected}
+Consider $X = [0, 1] \cup [2, 3] \subset \R$. Then $X$ is compact (finite union of compact intervals) but not connected (disconnected into two components).
+
+\end{example}
+
+\begin{example}[Connected but Not Compact]
+\label{ex:connected-not-compact}
+Consider $X = (0, 1) \cup [2, 3] \subset \R$. Then $X$ is not compact (not closed, e.g., the sequence $1/n$ has no limit in $X$), but it is connected (the closure $\overline{X} = [0, 1] \cup [2, 3]$ is connected).
+
+\end{example}
+
+\begin{example}[Compact but Not Path-Connected]
+\label{ex:compact-not-path-connected}
+The \textbf{Topologist's Sine Curve} $X = \{(x, \sin(1/x)) : 0 < x \leq 1\} \cup \{(0, y) : -1 \leq y \leq 1\} \subset \R^2$ is compact but not path-connected.
+
+\end{example}
+
+\section{Exercises}
+\label{sec:topology-exercises}
+
+\begin{exercise}[Compactness of Closed and Bounded Sets]
+\label{ex:compact-closed-bounded}
+Show that $\C^n$ with the standard topology is not compact.
+
+\begin{proof}
+Consider the open cover $\{B_n = \{z \in \C^n : \max |z_i| < n\} : n \in \N\}$. Each $B_n$ is an open ball of radius $n$. The set $\C^n$ is the union of all $B_n$, so $\{B_n\}_{n \in \N}$ is an open cover of $\C^n$. If $\C^n$ were compact, there would be a finite subcover, but $\C^n$ is unbounded, so no finite union of bounded sets can cover it.
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Connectedness of the Real Line]
+\label{ex:connected-real-line}
+Show that $\R$ is connected.
+
+\begin{proof}
+Suppose $\R = U \cup V$ with $U, V$ disjoint nonempty open sets. Without loss of generality, let $0 \in U$. Since $U$ is open, there exists $\epsilon > 0$ such that $(-\epsilon, \epsilon) \subseteq U$. Let $S = \{x \in \R : [0, x] \subseteq U\}$. Since $0 \in U$, $0 \in S$. Since $S$ is bounded above (otherwise $U$ contains all positive reals, contradicting $V$ nonempty), let $s = \sup S$. We claim $s \in \partial U$.
+
+Since $U$ is open, $s \in U$, so there exists $\delta > 0$ such that $(s-\delta, s+\delta) \subseteq U$. But $s \in S$, so $[0, s] \subseteq U$. If $s \in U$, then $s + \delta \in U$, so $s + \delta \in S$, contradicting $s = \sup S$. Hence $s \in \partial U$, which contradicts $U, V$ being disjoint. Thus $\R$ is connected.
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Heine-Borel in Complex Space]
+\label{ex:heine-borel-complex}
+Show that a subset $S \subset \C^n$ is compact if and only if $S$ is closed and bounded.
+
+\begin{proof}
+This is the complex-valued version of the Heine-Borel theorem. A subset $S \subset \C^n$ is compact iff $S$ is closed and bounded.
+
+\textbf{(Only if:) } If $S$ is compact, then $S$ is closed (compact subsets of Hausdorff spaces are closed) and bounded (compact subsets are bounded in metric spaces).
+
+\textbf{(If:) } If $S$ is closed and bounded, then $S \subset \mathbb{R}^{2n}$ (identifying $\C^n$ with $\mathbb{R}^{2n}$ via $z = x+iy \mapsto (x,y)$). By the real Heine-Borel theorem, $S$ is compact in $\mathbb{R}^{2n}$, hence in $\C^n$.
+\end{proof}
+\end{exercise}
+
+\end{chapter}

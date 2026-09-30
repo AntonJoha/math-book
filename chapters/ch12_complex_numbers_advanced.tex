@@ -1,0 +1,322 @@
+\chapter{Complex Numbers - Advanced Topics}
+\label{ch:complex-advanced}
+
+\section{Polar Form and Euler's Formula}
+\label{sec:complex-polar}
+
+Every nonzero complex number $z$ can be written in polar form as $z = r e^{i\theta}$, where $r = |z|$ and $\theta = \arg(z)$.
+
+\begin{definition}[Argument]
+\label{def:argument}
+The \textbf{argument} of $z$ is any real number $\theta$ such that $z = |z|(\cos \theta + i \sin \theta)$. The set of all arguments is $\{\theta + 2n\pi : n \in \Z\}$. The \textbf{principal argument} is $\arg(z) \in (-\pi, \pi]$.
+\end{definition}
+
+\begin{theorem}[Euler's Formula]
+\label{thm:euler-formula}
+For any real number $\theta$, we have $e^{i\theta} = \cos \theta + i \sin \theta$.
+\end{theorem}
+
+\begin{proof}
+Consider the Taylor series expansions of $e^x$, $\cos x$, and $\sin x$:
+\[ e^x = \sum_{n=0}^\infty \frac{x^n}{n!}, \quad \cos x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n}}{(2n)!}, \quad \sin x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!} \]
+Substituting $x = i\theta$:
+\[ e^{i\theta} = \sum_{n=0}^\infty \frac{(i\theta)^n}{n!} = 1 + i\theta + \frac{(i\theta)^2}{2!} + \frac{(i\theta)^3}{3!} + \cdots \]
+\[ = 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \cdots + i\left(\theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots\right) \]
+\[ = \cos \theta + i \sin \theta \]
+The series converge absolutely, so the rearrangement is valid.
+\end{proof}
+
+\section{Complex Exponential}
+\label{sec:complex-exponential}
+
+The complex exponential function $e^z$ extends the real exponential to complex numbers.
+
+\begin{theorem}[Properties of Complex Exponential]
+\label{thm:complex-exp}
+For $z_1, z_2 \in \C$:
+\begin{enumerate}
+\item $e^{z_1 + z_2} = e^{z_1} e^{z_2}$
+\item $e^{0} = 1$
+\item $|e^z| = e^{\operatorname{Re}(z)}$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$. Then:
+\[ e^{z_1} e^{z_2} = e^{x_1 + iy_1} e^{x_2 + iy_2} = e^{x_1} e^{iy_1} e^{x_2} e^{iy_2} \]
+\[ = e^{x_1} (\cos y_1 + i \sin y_1) e^{x_2} (\cos y_2 + i \sin y_2) \]
+\[ = e^{x_1 + x_2} (\cos y_1 \cos y_2 - \sin y_1 \sin y_2 + i(\sin y_1 \cos y_2 + \cos y_1 \sin y_2)) \]
+\[ = e^{x_1 + x_2} (\cos(y_1 + y_2) + i \sin(y_1 + y_2)) \]
+\[ = e^{x_1 + x_2 + i(y_1 + y_2)} = e^{z_1 + z_2} \]
+
+For $e^0$: $e^0 = e^{0 + i0} = 1$ by the definition of the exponential.
+
+For $|e^z|$: Let $z = x + iy$. Then $|e^z| = |e^x e^{iy}| = e^x |e^{iy}| = e^x$ since $|e^{iy}| = |\cos y + i \sin y| = 1$.
+\end{proof}
+
+\section{Complex Logarithm}
+\label{sec:complex-log}
+
+The complex logarithm is the multivalued inverse of the exponential function.
+
+\begin{definition}[Complex Logarithm]
+\label{def:complex-log}
+The \textbf{complex logarithm} of $z$ is defined as:
+\[ \log z = \ln|z| + i(\arg(z) + 2n\pi), \quad n \in \Z \]
+The \textbf{principal branch} $\Log z$ uses $\arg(z) \in (-\pi, \pi]$.
+\end{definition}
+
+\begin{theorem}[Properties of Complex Logarithm]
+\label{thm:complex-log}
+For $z_1, z_2 \in \C \setminus (-\infty, 0]$:
+\begin{enumerate}
+\item $\Log(z_1 z_2) = \Log z_1 + \Log z_2$
+\item $\Log(z_1 / z_2) = \Log z_1 - \Log z_2$
+\item $\Log(z_1^z_2)$ is not simply $z_2 \Log z_1$ in general
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Part 1:} Let $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$ with $\theta_1, \theta_2 \in (-\pi, \pi]$.
+Then $\Log z_1 = \ln r_1 + i\theta_1$ and $\Log z_2 = \ln r_2 + i\theta_2$.
+\[ \Log z_1 + \Log z_2 = \ln r_1 + \ln r_2 + i(\theta_1 + \theta_2) = \ln(r_1 r_2) + i(\theta_1 + \theta_2) \]
+If $\theta_1 + \theta_2 \in (-\pi, \pi]$, then $\Log(z_1 z_2) = \ln(r_1 r_2) + i(\theta_1 + \theta_2)$.
+
+However, if $\theta_1 + \theta_2$ falls outside $(-\pi, \pi]$, we need to adjust by $2n\pi$.
+This is why the property holds only when $-\pi < \theta_1 + \theta_2 \leq \pi$.
+
+\textbf{Part 2:} Similarly for division, $\Log(z_1/z_2) = \ln(r_1/r_2) + i(\theta_1 - \theta_2)$ when $\theta_1 - \theta_2 \in (-\pi, \pi]$.
+
+\textbf{Part 3:} Consider $z_2 = 2, z_1 = e^{i\pi} = -1$.
+Then $\Log z_1 = \ln 1 + i\pi = i\pi$ and $z_2 \Log z_1 = 2i\pi$.
+But $z_1^{z_2} = (-1)^2 = 1$, and $\Log 1 = 2n\pi i$ for $n \in \Z$.
+So $\Log(z_1^{z_2}) \neq z_2 \Log z_1$ in general.
+\end{proof}
+
+\section{Cauchy-Riemann Equations}
+\label{sec:cauchy-riemann}
+
+A function $f: D \to \C$ is complex differentiable at $z_0$ if and only if it is differentiable in the real sense and satisfies the Cauchy-Riemann equations.
+
+\begin{theorem}[Cauchy-Riemann Equations]
+\label{thm:cauchy-riemann}
+Let $f(x + iy) = u(x, y) + i v(x, y)$. Then $f$ is complex differentiable at $z_0$ if and only if:
+\begin{enumerate}
+\item $u$ and $v$ have continuous first-order partial derivatives at $z_0$
+\item $u_x(z_0) = v_y(z_0)$ and $u_y(z_0) = -v_x(z_0)$
+\end{enumerate}
+In this case, $f'(z_0) = u_x + i v_x = v_y - i u_y$.
+\end{theorem}
+
+\begin{proof}
+Let $f = u + iv$. Using the definition of complex differentiability:
+\[ \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h} = f'(z_0) \]
+Let $h = \Delta x + i \Delta y$. Then:
+\[ f'(z_0) = \lim_{\Delta x \to 0} \frac{f(z_0 + \Delta x) - f(z_0)}{\Delta x} = u_x + i v_x \]
+\[ f'(z_0) = \lim_{\Delta y \to 0} \frac{f(z_0 + i \Delta y) - f(z_0)}{i \Delta y} = \frac{u_y + i v_y}{i} = v_y - i u_y \]
+Equating the two: $u_x + i v_x = v_y - i u_y$, which gives $u_x = v_y$ and $v_x = -u_y$.
+\end{proof}
+
+\section{Residue Theory}
+\label{sec:residue-theory}
+
+The residue theorem is one of the most powerful tools in complex analysis.
+
+\begin{definition}[Residue]
+\label{def:residue}
+Let $f$ have an isolated singularity at $z_0$. The \textbf{residue} of $f$ at $z_0$ is the coefficient $a_{-1}$ in the Laurent series expansion:
+\[ f(z) = \sum_{n=-\infty}^\infty a_n (z - z_0)^n \]
+For simple poles, $\operatorname{Res}(f, z_0) = \lim_{z \to z_0} (z - z_0) f(z)$.
+\end{definition}
+
+\begin{theorem}[Residue Theorem]
+\label{thm:residue-theorem}
+Let $f$ be holomorphic on a domain $D$ except for isolated singularities $z_1, \ldots, z_n$. If $\gamma$ is a closed contour in $D$ enclosing these singularities once counterclockwise:
+\[ \oint_\gamma f(z)\,dz = 2\pi i \sum_{j=1}^n \operatorname{Res}(f, z_j) \]
+\end{theorem}
+
+\begin{proof}
+By the Cauchy-Goursat theorem, if $f$ is holomorphic on and inside $\gamma$, then $\oint_\gamma f(z)\,dz = 0$.
+Using the Laurent series at each singularity $z_j$:
+\[ f(z) = \sum_{n=-\infty}^\infty a_n (z - z_j)^n = \cdots + \frac{a_{-2}}{(z - z_j)^2} + \frac{a_{-1}}{z - z_j} + a_0 + \cdots \]
+\[ \oint_\gamma \frac{a_{-1}}{z - z_j}\,dz = a_{-1} \oint_\gamma \frac{1}{z - z_j}\,dz = 2\pi i \cdot a_{-1} \]
+Higher order poles contribute zero when integrated, as do holomorphic parts.
+The additivity of residues under contour deformation gives the result.
+\end{proof}
+
+\section{Exercises}
+\label{sec:complex-exercises}
+
+\begin{exercise}[Complex Logarithm and Exponential]
+\label{ex:complex-log-exp}
+Prove that $e^{\log z} = z$ for $z \in \C \setminus (-\infty, 0]$ and the principal branch $\Log z$.
+
+\begin{proof}
+Let $z = r e^{i\theta}$ with $\theta \in (-\pi, \pi]$. Then $\Log z = \ln r + i\theta$.
+\[ e^{\Log z} = e^{\ln r + i\theta} = e^{\ln r} e^{i\theta} = r e^{i\theta} = z \]
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Cauchy-Riemann and Differentiability]
+\label{ex:cauchy-riemann-example}
+Show that $f(z) = \bar{z} = x - iy$ is nowhere complex differentiable.
+
+\begin{proof}
+Write $f(x + iy) = x - iy$, so $u(x, y) = x$ and $v(x, y) = -y$.
+Then $u_x = 1$, $u_y = 0$, $v_x = 0$, $v_y = -1$.
+The Cauchy-Riemann equations require $u_x = v_y$ and $u_y = -v_x$, which gives $1 = -1$ and $0 = 0$.
+The first equation is never satisfied, so $f$ is nowhere complex differentiable.
+\end{proof}
+\end{exercise}
+
+\begin{exercise}[Residue Calculation]
+\label{ex:residue-example}
+Calculate $\operatorname{Res}(f, 0)$ where $f(z) = \frac{\sin z}{z^3}$.
+
+\begin{proof}
+Using the Maclaurin series for $\sin z = z - \frac{z^3}{3!} + \frac{z^5}{5!} - \cdots$:
+\[ f(z) = \frac{z - \frac{z^3}{6} + \cdots}{z^3} = \frac{1}{z^2} - \frac{1}{6} + \frac{z^2}{120} - \cdots \]
+The coefficient of $1/z$ is 0, so $\operatorname{Res}(f, 0) = 0$.
+\end{proof}
+\end{exercise}
+
+\section{Applications}
+\label{sec:complex-applications}
+
+Complex numbers have extensive applications in engineering, physics, and applied mathematics.
+
+\begin{example}[Alternating Current Analysis]
+\label{ex:ac-analysis}
+In electrical engineering, complex numbers represent sinusoidal quantities. A phasor $I = I_0 e^{j\omega t}$ represents a sinusoidal current with amplitude $I_0$ and angular frequency $\omega$.
+
+\end{example}
+
+\begin{example}[Fluid Dynamics]
+\label{ex:fluid-dynamics}
+In fluid dynamics, complex potential theory uses analytic functions to model incompressible, irrotational flow. The complex potential $w = \phi + i\psi$ encodes both the velocity potential $\phi$ and stream function $\psi$.
+
+\end{example}
+
+\begin{example}[Quantum Mechanics]
+\label{ex:quantum-mech}
+The probability density $|\psi|^2 = \psi \bar{\psi}$ and the probability current $j = \frac{\hbar}{2mi}(\psi^* \nabla \psi - \psi \nabla \psi^*)$ are fundamental to quantum mechanics.
+
+\end{example}
+
+\section{Advanced Topics in Complex Analysis}
+\label{sec:advanced-complex-anal}
+
+\begin{theorem}[Cauchy's Integral Theorem]
+\label{thm:cauchy-integral}
+Let $f$ be analytic on a simply connected domain $D$. Then for any closed curve $\gamma$ in $D$, $\oint_\gamma f(z)dz = 0$.
+
+\begin{proof}
+By Cauchy's theorem, the integral of an analytic function over a closed curve in a simply connected domain is zero. This follows from the fact that analytic functions have primitive antiderivatives in simply connected domains.
+\end{proof}
+
+\end{theorem}
+
+\begin{theorem}[Liouville's Theorem]
+\label{thm:liouville}
+Every bounded entire function is constant.
+
+\begin{proof}
+Let $f$ be a bounded entire function, so $|f(z)| < M$ for all $z \in \C$. By Cauchy's estimates, $|f^{(n)}(0)| \leq \frac{n!M}{R^n}$ for any $R > 0$. As $R \to \infty$, all derivatives at 0 are 0. Thus $f$ is constant by Taylor's theorem.
+\end{proof}
+
+\end{theorem}
+
+\begin{theorem}[Fundamental Theorem of Algebra]
+\label{thm:fta}
+Every non-constant polynomial with complex coefficients has at least one complex root.
+
+\begin{proof}
+Suppose for contradiction that $P(z) \neq 0$ for all $z \in \C$. Then $f(z) = 1/P(z)$ is an entire function. We show this is impossible.
+
+First, note that $|P(z)| \to \infty$ as $|z| \to \infty$. Indeed, for large $|z|$, the term $a_n z^n$ dominates all other terms, so $|P(z)| \geq |a_n||z|^n - |a_{n-1}||z|^{n-1} - \cdots - |a_0| \to \infty$.
+
+Thus $f$ is bounded for $|z| \geq R$ for some $R$. By continuity, $f$ is bounded on $\C$, hence $|f(z)| < M$ for all $z$.
+
+By Liouville's theorem, a bounded entire function must be constant. But if $f = c$, then $P(z) = 1/c$ is constant, contradiction. Hence $P$ must have a root.
+\end{proof}
+
+\end{theorem}
+
+\begin{theorem}[Polynomial Factorization]
+\label{thm:poly-factorization}
+Every non-constant polynomial $P(z)$ of degree $n$ over $\C$ factors as
+\[ P(z) = a_n (z-z_1)(z-z_2)\cdots(z-z_n) \]
+where $z_1, \dots, z_n$ are the roots of $P$, counted with multiplicity.
+
+\begin{proof}
+By induction on $n$. Base case $n=1$ is trivial. Suppose true for degree $n-1$. Let $z_1$ be a root of $P$. By the Root Factorization theorem, $P(z) = (z-z_1)Q(z)$ where $Q$ has degree $n-1$. By the induction hypothesis, $Q(z) = a_n(z-z_2)\cdots(z-z_n)$. Hence $P(z) = a_n(z-z_1)\cdots(z-z_n)$.
+\end{proof}
+
+\end{theorem}
+
+\section{Gauss-Lucas Theorem}
+\label{sec:gauss-lucas}
+
+\begin{theorem}[Gauss-Lucas Theorem]
+\label{thm:gauss-lucas}
+If $z_1, \dots, z_n$ are the roots of a monic polynomial $P(z)$, then all roots of $P'(z)$ lie in the convex hull of $\{z_1, \dots, z_n\}$.
+
+\begin{proof}
+For a monic polynomial $P(z) = \prod_{i=1}^n (z-z_i)$, we have $P'(z) = P(z) \sum_{j=1}^n \frac{1}{z-z_j}$. If $P'(z) = 0$ and $P(z) \neq 0$, then $\sum_{j=1}^n \frac{1}{z-z_j} = 0$.
+
+Let $z_1, \dots, z_n$ be in the convex hull $C$. Consider $f(w) = P(w)/P(z)$. The derivative $f'(w)$ has roots satisfying $\sum \frac{1}{w-z_j} = 0$. By the properties of harmonic functions and the maximum principle, these roots must lie in the convex hull.
+\end{proof}
+
+\end{theorem}
+
+\begin{theorem}[Open Mapping Theorem]
+\label{thm:open-mapping}
+Let $f$ be a non-constant holomorphic function on an open set $U \subseteq \C$. Then $f(U)$ is an open set.
+
+\begin{proof}
+Let $z_0 \in U$. Since $f$ is holomorphic, it has a Taylor expansion around $z_0$. By the Cauchy-Riemann equations, the partial derivatives $f_x, f_y$ are continuous. If $f'(z_0) \neq 0$, then the Jacobian matrix has non-zero determinant, so $f$ is locally invertible by the inverse function theorem. Thus $f(U)$ contains an open neighborhood of $f(z_0)$, so $f(U)$ is open.
+\end{proof}
+
+\end{theorem}
+
+\section{Maximum Modulus Principle}
+\label{sec:maximum-modulus}
+
+\begin{theorem}[Maximum Modulus Principle]
+\label{thm:max-modulus}
+If $f$ is holomorphic on an open set $U$ and $z_0 \in U$, then $|f|$ attains its maximum on any compact subset $K \subset U$ only at the boundary of $K$.
+
+\begin{proof}
+Suppose $|f|$ attains its maximum at an interior point $z_0 \in \text{int}(K)$. Let $f(z_0 + \delta) = f(z_0) + \epsilon$ where $\epsilon$ is a complex number with $|\epsilon| < |f(z_0)|$. Then $|f(z_0 + \delta)| < |f(z_0)|$ for all $\delta \neq 0$ sufficiently small, so $z_0$ cannot be a maximum. By the open mapping theorem, $f(\text{int}(K))$ is open, so $|f|$ cannot attain its maximum in the interior.
+\end{proof}
+
+\end{theorem}
+
+\section{Exercises}
+\label{sec:complex-exercises}
+
+\begin{exercise}[Roots of Unity]
+\label{ex:roots-unity}
+Show that the roots of $z^n - 1 = 0$ are $e^{2\pi i k/n}$ for $k = 0, 1, \ldots, n-1$.
+
+\begin{proof}
+Let $\zeta_k = e^{2\pi i k/n}$. Then $\zeta_k^n = e^{2\pi i k} = 1$, so $\zeta_k^n - 1 = 0$. There are $n$ distinct roots $\zeta_0, \zeta_1, \ldots, \zeta_{n-1}$ since $\zeta_j = \zeta_k \iff 2\pi j/n - 2\pi k/n = 2\pi m$ for some integer $m$, which implies $j \equiv k \pmod n$. By the Fundamental Theorem of Algebra, these are all the roots.
+\end{proof}
+
+\end{exercise}
+
+\begin{exercise}[Modulus of Complex Numbers]
+\label{ex:modulus-complex}
+Show that $|z_1 z_2| = |z_1| \cdot |z_2|$ for all $z_1, z_2 \in \C$.
+
+\begin{proof}
+Let $z_1 = x_1 + i y_1$ and $z_2 = x_2 + i y_2$. Then $z_1 z_2 = (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + y_1 x_2)$. Thus $|z_1 z_2|^2 = (x_1 x_2 - y_1 y_2)^2 + (x_1 y_2 + y_1 x_2)^2 = x_1^2 x_2^2 + y_1^2 y_2^2 - 2x_1 x_2 y_1 y_2 + x_1^2 y_2^2 + y_1^2 x_2^2 + 2x_1 y_2 y_1 x_2 = x_1^2(x_2^2 + y_2^2) + y_1^2(x_2^2 + y_2^2) = (x_1^2 + y_1^2)(x_2^2 + y_2^2) = |z_1|^2 |z_2|^2$. Taking square roots, $|z_1 z_2| = |z_1| \cdot |z_2|$.
+\end{proof}
+
+\end{exercise}
+
+\end{chapter}
+
+
+
+
