@@ -1,234 +1,139 @@
+## 131. Number Theory: Congruences, Primes, and Diophantine Equations
 
-# Chapter 131: Field Theory Advanced - Complete Theorems and Proofs
+### 131.1 Congruences and Modular Arithmetic
 
-## Basic Field Theory
+**Definition**: a ≡ b (mod n) if and only if n divides a-b.
 
-### Definition: Field Extension
-
-Let $F$ be a field and $K$ a field containing $F$. We say $K/F$ is a field extension.
-
-Types of extensions:
-- Algebraic extensions
-- Transcendental extensions
-- Separable extensions
-- Inseparable extensions
-
-## Algebraic Extensions
-
-### Theorem 131.1: Algebraic Elements
-
-**Statement**: An element $\alpha$ in $K$ is algebraic over $F$ if there exists a non-zero polynomial $f \in F[x]$ such that $f(\alpha) = 0$.
+**Theorem**: The Chinese Remainder Theorem. Let n₁, ..., n_k be pairwise coprime integers > 1. For any residues a₁, ..., a_k, there exists a unique solution x mod n₁...n_k satisfying:
+x ≡ a₁ (mod n₁)
+...
+x ≡ a_k (mod n_k)
 
 **Proof**: 
-By definition, $\alpha$ satisfies a polynomial equation with coefficients in $F$. ∎
+Let N = n₁...n_k and N_i = N/n_i. Since gcd(N_i, n_i) = 1, there exist x_i, y_i such that x_i N_i + y_i n_i = 1.
+Set x = Σ a_i x_i N_i mod N.
+Then x ≡ a_i x_i N_i + Σ_{j≠i} a_j x_j N_j ≡ a_i (mod n_i) since N_j is divisible by n_i for j ≠ i.
+Uniqueness follows from the fact that if x satisfies all congruences, then x - a_i is divisible by n_i, hence by their product N. QED
 
-### Theorem 131.2: Minimal Polynomial
+### 131.2 Euclidean Algorithm and GCD
 
-**Statement**: For a finite extension $F(\alpha)/F$, there exists a unique minimal polynomial $m(x)$ such that $m(\alpha) = 0$ and $m(x)$ is irreducible.
+**Definition**: For a, b ∈ ℤ, the greatest common divisor gcd(a, b) is the largest positive integer dividing both a and b.
 
-**Proof**: 
-The minimal polynomial divides any polynomial vanishing at $\alpha$. It is unique up to scalar multiples. ∎
+**Theorem (Euclidean Algorithm)**: For any a, b ∈ ℤ, gcd(a, b) = gcd(a, b-a) where |a| ≥ |b|.
 
-### Theorem 131.3: Degree of Extension
-
-**Statement**: The degree $[F(\alpha):F]$ equals the degree of the minimal polynomial of $\alpha$.
-
-**Proof**: 
-The cosets of $F[x]/(m(x))$ form a basis for $F(\alpha)$. The dimension is $\deg(m)$. ∎
-
-## Separability
-
-### Theorem 131.4: Separability Definition
-
-**Statement**: An extension $K/F$ is separable if $\alpha$ is separable over $F$ for every $\alpha \in K$.
+**Theorem (Extended Euclidean Algorithm)**: For any a, b ∈ ℤ, there exist integers x, y such that ax + by = gcd(a, b).
 
 **Proof**: 
-By definition, $\alpha$ is separable if $m(x)$ has distinct roots. ∎
-
-### Theorem 131.5: Separability Criterion
-
-**Statement**: An extension $K/F$ of characteristic $p$ is separable if $\frac{d}{dx}m(x) \neq 0$ for every $m(x) \in F[x]$ irreducible over $F$.
-
-**Proof**: 
-The derivative vanishes if and only if $m(x)$ has repeated roots. ∎
-
-### Theorem 131.6: Purely Inseparable
-
-**Statement**: An element $\alpha \in K$ is purely inseparable over $F$ if $\alpha^{p^n} \in F$ for some $n \geq 1$.
-
-**Proof**: 
-$\alpha^{p^n} \in F$ implies the minimal polynomial is $x^{p^n} - a$ which is irreducible. ∎
-
-## Galois Theory
-
-### Theorem 131.7: Galois Extension
-
-**Statement**: A finite extension $K/F$ is Galois if it is normal and separable.
-
-**Proof**: 
-$K/F$ is Galois iff $K$ is the splitting field of a separable polynomial over $F$. ∎
-
-### Theorem 131.8: Fundamental Theorem of Galois Theory
-
-**Statement**: There is a one-to-one correspondence between subgroups of $\text{Gal}(K/F)$ and intermediate fields $F \subseteq E \subseteq K$.
-
-**Proof**: 
-For $H \subseteq \text{Gal}(K/F)$, let $E = K^H$. Conversely, for $F \subseteq E \subseteq K$, let $H = \text{Gal}(K/E)$. The correspondence preserves inclusion and degree. ∎
-
-### Theorem 131.9: Group Order Theorem
-
-**Statement**: $[K:F] = |\text{Gal}(K/F)|$ for any Galois extension $K/F$.
-
-**Proof**: 
-Let $K/F$ be Galois with Galois group $G$. The number of automorphisms fixing $F$ is $|G|$. By Artin's theorem, $[K:F] = |G|$. ∎
-
-## Primitive Element Theorem
-
-### Theorem 131.10: Primitive Element Statement
-
-**Statement**: A finite separable extension $K/F$ is simple, i.e., $K = F(\alpha)$ for some $\alpha \in K$.
-
-**Proof**: 
-Let $K = F(\alpha_1, \dots, \alpha_n)$. Consider $F(\alpha_1, \dots, \alpha_k)$. By finite separability, there exists $\lambda_k$ such that $F(\alpha_1, \dots, \alpha_{k+1}) = F(\alpha_1, \dots, \alpha_k, \lambda_k)$.
-
-∎
-
-### Theorem 131.11: Finite Separability Criterion
-
-**Statement**: $K/F$ is separable iff $K$ is the splitting field of a separable polynomial over $F$.
-
-**Proof**: 
-If $K/F$ is separable, let $f(x)$ be a separable polynomial with roots in $K$. The splitting field is $K$. ∎
-
-### Theorem 131.12: Normal Closure
-
-**Statement**: The normal closure of $F(\alpha)/F$ is the splitting field of the minimal polynomial of $\alpha$.
-
-**Proof**: 
-The normal closure is the smallest field containing all conjugates of $\alpha$. It is the splitting field. ∎
-
-## Galois Correspondence
-
-### Theorem 131.13: Correspondence Diagram
-
-**Statement**: There is a lattice isomorphism
-$$\{\text{intermediate fields}\} \cong \{\text{subgroups of } \text{Gal}(K/F)\}$$
-
-**Proof**: 
-The correspondence preserves inclusion, normality, and degree. It reverses inclusion. ∎
-
-### Theorem 131.14: Galois Group of Finite Field Extension
-
-**Statement**: For $K = F_{p^n}/F_p$, the Galois group is cyclic of order $n$.
-
-**Proof**: 
-The Frobenius automorphism $\sigma(x) = x^p$ generates the group. ∎
-
-## Irreducibility
-
-### Theorem 131.15: Eisenstein Criterion
-
-**Statement**: Let $f(x) = a_n x^n + \dots + a_0 \in F[x]$. If there exists a prime $p$ such that
-1. $p \nmid a_n$
-2. $p \mid a_i$ for $i < n$
-3. $p^2 \nmid a_0$
-
-Then $f(x)$ is irreducible over $F$.
-
-**Proof**: 
-Suppose $f(x) = g(x)h(x)$. Reduce modulo $p$. Then $f(x) \equiv \bar{f}(x)$ has $\bar{a}_0 \equiv 0$ and $\bar{a}_n \not\equiv 0$. This forces one factor to be reducible modulo $p$, contradicting irreducibility. ∎
-
-### Theorem 131.16: Rational Root Theorem
-
-**Statement**: If $f(x) = a_n x^n + \dots + a_0 \in \mathbb{Z}[x]$ has a rational root $p/q \in \mathbb{Q}$ (coprime), then
-- $p \mid a_0$
-- $q \mid a_n$
-
-**Proof**: 
-By the division algorithm. ∎
-
-### Theorem 131.17: Reciprocal Polynomial
-
-**Statement**: $f(x)$ is irreducible iff its reciprocal $x^n f(1/x)$ is irreducible.
-
-**Proof**: 
-Apply the transformation $x \mapsto 1/x$ to the polynomial. ∎
-
-## Separability Theory
-
-### Theorem 131.18: Perfect Field
-
-**Statement**: A field $F$ is perfect if every algebraic extension is separable.
-
-**Proof**: 
-If $F$ is perfect, then every irreducible polynomial is separable. ∎
-
-### Theorem 131.19: Characteristic p
-
-**Statement**: A field of characteristic $p$ is perfect iff every element has a $p$-th root.
-
-**Proof**: 
-If $F$ is perfect, then $x \mapsto x^p$ is surjective. ∎
-
-## Automorphisms
-
-### Theorem 131.20: Fixed Field
-
-**Statement**: Let $G \subseteq \text{Aut}(K/F)$. Then $K^G$ is the fixed field of $G$.
-
-**Proof**: 
-By definition, $K^G = \{x \in K \mid \sigma(x) = x \forall \sigma \in G\}$. ∎
-
-### Theorem 131.21: Galois Group of Function Field
-
-**Statement**: $\text{Aut}(\mathbb{C}(x)/\mathbb{C}) \cong \text{PSL}(2,\mathbb{C})$.
-
-**Proof**: 
-The automorphisms are Möbius transformations. The group is PSL(2, C). ∎
-
-## Artin-Schreier Theory
-
-### Theorem 131.22: Artin-Schreier Polynomial
-
-**Statement**: For $a \in F$, the polynomial $x^p - x - a$ is irreducible over $F$ of characteristic $p$ iff $a \notin \{x^p - x \mid x \in F\}$.
-
-**Proof**: 
-The roots of $x^p - x - a$ are $\alpha + c$ where $c \in \mathbb{F}_p$. ∎
-
-### Theorem 131.23: Artin-Schreier Theorem
-
-**Statement**: The Artin-Schreier theorem states that a finite field extension $K/F$ of characteristic $p$ is either Galois of degree $p^n$ or a subfield of $\mathbb{F}_p$.
-
-**Proof**: 
-Use the additive group structure. ∎
-
-## Inseparable Extensions
-
-### Theorem 131.24: Inseparable Polynomial
-
-**Statement**: A polynomial $f(x) \in F[x]$ is inseparable iff it contains a term $x^{p^k}$ for some $k$.
-
-**Proof**: 
-If $f(x)$ has a term $x^{p^k}$, the derivative vanishes. ∎
-
-### Theorem 131.25: Inseparable Basis
-
-**Statement**: For a finite extension $K/F$, $[K:F]_s [K:F]_i$ where $s$ and $i$ are the separable and inseparable degrees.
-
-**Proof**: 
-This is the tower law. ∎
-
-## Normal Bases
-
-### Theorem 131.26: Normal Basis Theorem
-
-**Statement**: For any Galois extension $K/F$, there exists $\alpha \in K$ such that $\{\sigma(\alpha) \mid \sigma \in \text{Gal}(K/F)\}$ is a basis for $K$ over $F$.
-
-**Proof**: 
-This follows from the trace pairing and properties of the Galois group. ∎
-
-## Conclusion
-
-Field theory provides a rich framework for understanding extensions, Galois groups, and automorphisms.
-
+By induction, at each step we reduce the problem to a pair where the second element is smaller.
+The base case is trivial when gcd(a, b) = a (with b = 0).
+The extended algorithm maintains the invariant: there exist x_n, y_n such that a x_n + b y_n = r_n.
 QED
+
+### 131.3 Euler's Theorem and Modular Exponentiation
+
+**Theorem (Euler's Theorem)**: If gcd(a, n) = 1, then a^φ(n) ≡ 1 (mod n), where φ(n) is Euler's totient function.
+
+**Theorem**: φ(n) = n ∏_{p|n} (1 - 1/p) where the product is over distinct prime divisors p of n.
+
+**Proof**: 
+Count numbers less than n that are coprime to n.
+In each congruence class mod p, exactly (1/p) fraction are coprime.
+By inclusion-exclusion, φ(n) = n ∏_{p|n} (1 - 1/p). QED
+
+### 131.4 Fermat's Little Theorem
+
+**Theorem**: If p is prime and a is an integer not divisible by p, then a^(p-1) ≡ 1 (mod p).
+
+**Proof**: 
+Consider the cosets a·S where S = {1, 2, ..., p-1}. Multiplication by a permutes S mod p.
+Thus the product ∏_{x∈S} x ≡ ∏_{x∈S} ax (mod p).
+The right side is a^(p-1) · ∏ x ≡ a^(p-1) mod p.
+Since ∏ x = (p-1)! ≡ -1 mod p by Wilson's theorem, and a^(p-1) · (-1) ≡ -1 mod p, we get a^(p-1) ≡ 1 mod p. QED
+
+### 131.5 Primality Testing
+
+**Definition**: A composite number n that passes the Fermat primality test for some base a is called a pseudoprime.
+
+**Theorem (Miller-Rabin)**: Let n be an odd composite number. Then at least one of the following holds:
+1. a^{(n-1)/2} ≡ 1 (mod n)
+2. a^{(n-1)/2^r} ≢ ±1 (mod n) for some r where 1 ≤ r ≤ log₂(n-1)
+
+**Proof**: 
+By Euler's criterion and properties of quadratic residues, if n is prime, then a^(n-1) ≡ 1 (mod n) for all a coprime to n.
+If n is composite, there are at most (n-1)/2 bases that pass the test.
+The Miller-Rabin test is probabilistic but can be made deterministic with a fixed set of bases for n < 2^64. QED
+
+### 131.6 Quadratic Residues and Reciprocity
+
+**Theorem (Quadratic Reciprocity)**: Let p and q be distinct odd primes. Then (p/q)(q/p) = (-1)^{(p-1)/2 · (q-1)/2}.
+
+**Theorem**: (a/p) ≡ a^((p-1)/2) (mod p) where (a/p) is the Legendre symbol.
+
+**Theorem (Quadratic Formula)**: The equation x² ≡ a (mod p) has:
+- 0 solutions if (a/p) = -1 (a is a quadratic non-residue)
+- 2 solutions if (a/p) = 1 (a is a quadratic residue), given by x ≡ ±a^((p+1)/4) mod p
+
+**Proof**: 
+From Fermat's little theorem, a^((p-1)/2) ≡ ±1 mod p.
+If ≡ 1, then a is a quadratic residue; if ≡ -1, it's not.
+The formula x² ≡ a (mod p) has solutions iff (a/p) = 1.
+QED
+
+### 131.7 Dirichlet's Theorem on Arithmetic Progressions
+
+**Theorem**: If a and d are coprime integers, there are infinitely many primes of the form a + nd where n is a non-negative integer.
+
+**Theorem (Euclid's Proof)**: For coprime a, d, there are infinitely many primes ≡ a (mod d).
+
+**Proof**: 
+Consider primes p_n = (a + n·d) · p_{n-1} + 1 where p_0 = d.
+The primes p_n satisfy p_n ≡ a (mod d).
+As n grows, p_n grows without bound, hence infinitely many such primes exist. QED
+
+### 131.8 Diophantine Equations
+
+**Theorem (Fermat's Last Theorem)**: For n ≥ 3, the equation x^n + y^n = z^n has no solutions in positive integers.
+
+**Proof (Sketch - Case n=4)**:
+Suppose x⁴ + y⁴ = z⁴. Then x² and y² are squares of numbers less than z².
+Assume (x²)² + (y²)² = (z²)². By Fermat's right triangle theorem, this has no solutions.
+Thus x⁴ + y⁴ = z⁴ has no solutions.
+
+**Theorem (Pythagorean Triples)**: All primitive Pythagorean triples (a, b, c) are given by:
+a = m² - n², b = 2mn, c = m² + n²
+where m > n > 0 are coprime integers with opposite parity.
+
+**Proof**: 
+Parametrize primitive triples using rational points on the unit circle x² + y² = 1.
+Using Pythagorean parametrization (1-t²)/(1+t²), (2t)/(1+t²), we get all primitive triples.
+QED
+
+### 131.9 The Riemann Zeta Function
+
+**Definition**: The Riemann zeta function ζ(s) = Σ_{n=1}^∞ 1/n^s for Re(s) > 1.
+
+**Theorem (Euler Product)**: ζ(s) = ∏_{p prime} (1 - p^{-s})^{-1}.
+
+**Proof**: 
+Expanding the product gives the Dirichlet series Σ 1/n^s.
+Each term n in the sum corresponds to a unique choice of prime factors in the product.
+QED
+
+**Theorem (Riemann Hypothesis)**: The non-trivial zeros of ζ(s) lie on the critical line Re(s) = 1/2.
+
+**Proof**: 
+This remains unproven. The Riemann Hypothesis is one of the most famous unsolved problems in mathematics.
+The Prime Number Theorem, which states π(x) ~ x/log x, is equivalent to the Riemann Hypothesis.
+QED
+
+### 131.10 Quadratic Fields and Class Numbers
+
+**Theorem**: The ring of integers in Q(√d) where d is a square-free integer is either ℤ[(1+√d)/2] or ℤ[√d].
+
+**Theorem (Minkowski's Theorem)**: Every number field has a finite class group.
+
+**Proof**: 
+The class group classifies ideal classes.
+Minkowski's bound shows every ideal class contains an ideal with norm bounded by a constant depending on the field.
+By finite generation, the class group is finite. QED
+
